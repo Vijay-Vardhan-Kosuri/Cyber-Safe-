@@ -54,3 +54,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #10: Establish 10 CIS Controls v8 and NIST CSF 2.0 checklist categories
+- **Branch:** `feat/cis-nist-categories-schema`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
