@@ -606,3 +606,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #102: Add live client-side fuzzy search filter across CIS Controls checklist catalog
+- **Branch:** `ui/cis-control-search-filter`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
