@@ -168,3 +168,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #29: Aggregate category compliance percentages and average posture scores
+- **Branch:** `feat/analytics-posture-queries`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
