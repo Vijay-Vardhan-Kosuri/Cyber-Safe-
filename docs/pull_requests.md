@@ -414,3 +414,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #70: Build global template registry panel with item counters
+- **Branch:** `ui/superadmin-global-framework-list`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
