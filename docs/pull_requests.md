@@ -162,3 +162,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #28: Disable add/edit/delete permissions on AuditEvent in Django admin
+- **Branch:** `feat/audit-trail-admin-protection`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
