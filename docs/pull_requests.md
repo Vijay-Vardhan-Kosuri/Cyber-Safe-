@@ -120,3 +120,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #21: Permit only Security Analyst and Org Admin to verify and close tasks
+- **Branch:** `feat/analyst-verification-workflow`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
