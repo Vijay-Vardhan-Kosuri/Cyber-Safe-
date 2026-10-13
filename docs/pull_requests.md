@@ -150,3 +150,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #26: Provide AJAX and form endpoints to mark notifications as read
+- **Branch:** `feat/mark-all-read-endpoints`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
