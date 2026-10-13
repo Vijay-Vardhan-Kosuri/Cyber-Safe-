@@ -192,3 +192,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #33: Add threat intelligence worker heuristics and sliding-window estimators
+- **Branch:** `feat/threat-intel-telemetry-engine`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
