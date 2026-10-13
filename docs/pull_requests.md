@@ -486,3 +486,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #82: Develop interactive checklist wizard with Compliant, Deficient, and N/A radios
+- **Branch:** `ui/assessment-wizard-interface`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
