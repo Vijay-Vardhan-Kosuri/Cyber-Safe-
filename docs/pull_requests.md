@@ -144,3 +144,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #25: Compute unread notification badge count in base navigation processor
+- **Branch:** `feat/notification-badge-counts`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
