@@ -18,3 +18,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #4: Implement Membership model with ACTIVE and SUSPENDED states
+- **Branch:** `feat/membership-status-lifecycle`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
