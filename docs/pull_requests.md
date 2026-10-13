@@ -492,3 +492,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #83: Implement JavaScript real-time answered controls counter and progress bar
+- **Branch:** `ui/wizard-realtime-progress-bar`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
