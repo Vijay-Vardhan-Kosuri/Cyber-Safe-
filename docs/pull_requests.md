@@ -132,3 +132,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #23: Calculate overdue task state dynamically from due date and completion state
+- **Branch:** `feat/overdue-task-calculation`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
