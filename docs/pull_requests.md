@@ -528,3 +528,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #89: Implement modal dialog for members to submit resolution notes and evidence
+- **Branch:** `ui/task-evidence-submission-modal`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
