@@ -288,3 +288,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #49: Implement SCIM 2.0 user provisioning and automated deprovisioning hooks
+- **Branch:** `feat/scim-directory-sync`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
