@@ -366,3 +366,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #62: Create 4-step posture lifecycle cards: Scope, Assess, Remediate, Verify
+- **Branch:** `ui/visual-4-step-workflow-timeline`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
