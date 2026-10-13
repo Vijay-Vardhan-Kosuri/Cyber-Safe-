@@ -90,3 +90,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #16: Ensure Not Applicable responses are safely omitted from scoring denominator
+- **Branch:** `feat/exclude-not-applicable-scoring`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
