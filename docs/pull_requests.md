@@ -450,3 +450,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #76: Design table for high/critical deficiencies with one-click task spawning
+- **Branch:** `ui/analyst-high-priority-findings-table`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
