@@ -522,3 +522,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #88: Build task detail card with priority chip, due date, and audit remarks
+- **Branch:** `ui/remediation-detail-timeline-card`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
