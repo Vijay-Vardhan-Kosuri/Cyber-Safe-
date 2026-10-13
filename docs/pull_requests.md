@@ -42,3 +42,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #8: Implement server-side @role_required decorator and RoleRequiredMixin
+- **Branch:** `feat/role-required-decorators`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
