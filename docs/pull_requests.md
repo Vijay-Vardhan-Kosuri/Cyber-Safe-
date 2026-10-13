@@ -474,3 +474,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #80: Create framework gallery grid showing global and custom templates
+- **Branch:** `ui/framework-gallery-template-view`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
