@@ -432,3 +432,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #73: Build recent assessments table with score color chips and review links
+- **Branch:** `ui/orgadmin-recent-assessments-table`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
