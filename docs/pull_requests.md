@@ -354,3 +354,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #60: Build striking hero 'Take Control of Your Cybersecurity Posture' with CTAs
+- **Branch:** `ui/conference-landing-hero`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
