@@ -648,3 +648,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #109: Add client-side PDF export styling and formatting for executive boards
+- **Branch:** `ui/executive-summary-pdf-export`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
