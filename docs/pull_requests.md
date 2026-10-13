@@ -420,3 +420,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #71: Design Organization Admin dashboard with average posture score KPI
+- **Branch:** `ui/orgadmin-dashboard-overview`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
