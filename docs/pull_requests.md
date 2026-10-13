@@ -612,3 +612,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #103: Design side-by-side assessment version comparison and score drift viewer
+- **Branch:** `ui/assessment-diff-comparison`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
