@@ -102,3 +102,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #18: Create RemediationTask model linked to assessment findings
+- **Branch:** `feat/remediation-task-model`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
