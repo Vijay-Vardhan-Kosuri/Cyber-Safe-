@@ -258,3 +258,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #44: Implement RFC 5424 compliant TLS Syslog forwarder for external SIEM integration
+- **Branch:** `feat/siem-syslog-forwarder`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
