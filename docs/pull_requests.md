@@ -294,3 +294,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #50: Add organizational CIDR IP range allowlist evaluation middleware
+- **Branch:** `feat/ip-allowlist-firewall`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
