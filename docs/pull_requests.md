@@ -498,3 +498,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #84: Add 'Save Draft' button preserving in-progress questionnaire responses
+- **Branch:** `ui/wizard-draft-autosave-helper`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
