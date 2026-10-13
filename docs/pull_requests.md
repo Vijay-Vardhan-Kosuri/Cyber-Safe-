@@ -348,3 +348,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #59: Implement .btn-cyber-primary, .btn-cyber-cyan, and .btn-cyber-outline
+- **Branch:** `ui/high-contrast-button-styles`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
