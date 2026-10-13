@@ -438,3 +438,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #74: Implement Security Analyst dashboard with assessment review queue
+- **Branch:** `ui/analyst-dashboard-layout`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
