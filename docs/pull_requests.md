@@ -510,3 +510,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #86: Render category-by-category compliance progress bars with gap indicators
+- **Branch:** `ui/category-compliance-breakdown-bars`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
