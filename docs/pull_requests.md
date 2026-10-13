@@ -618,3 +618,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #104: Create print-optimized CSS stylesheet for auditor executive summaries
+- **Branch:** `ui/print-auditor-summary-view`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
