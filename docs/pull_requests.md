@@ -78,3 +78,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #14: Create AssessmentResponse model tracking Compliant, Needs Improvement, and N/A
+- **Branch:** `feat/assessment-response-tracking`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
