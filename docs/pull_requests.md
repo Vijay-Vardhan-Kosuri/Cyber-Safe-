@@ -342,3 +342,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #58: Design shark-fin geometric brand icon and angular card accent headers
+- **Branch:** `ui/shark-fin-geometric-badges`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
