@@ -138,3 +138,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #24: Create Notification model with category tags and direct link URLs
+- **Branch:** `feat/in-app-notification-model`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
