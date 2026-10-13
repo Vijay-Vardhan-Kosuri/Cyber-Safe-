@@ -312,3 +312,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #53: Calculate SHA-256 HMAC cryptographic chain across sequential audit records
+- **Branch:** `feat/audit-hmac-integrity`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
