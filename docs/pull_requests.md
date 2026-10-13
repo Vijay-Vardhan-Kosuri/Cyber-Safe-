@@ -24,3 +24,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #5: Build cryptographic UUID invitation tokens for workspace onboarding
+- **Branch:** `feat/secure-invitation-tokens`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
