@@ -204,3 +204,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #35: Add quantitative loss exposure calculations using FAIR methodology
+- **Branch:** `feat/risk-quantification-fair-model`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
