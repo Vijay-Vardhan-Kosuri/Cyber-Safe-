@@ -582,3 +582,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #98: Build interactive CSS grid compliance heatmap with severity color coding
+- **Branch:** `ui/posture-heatmap-matrix`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
