@@ -324,3 +324,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #55: Implement Redis token bucket rate limiting on public assessment endpoints
+- **Branch:** `feat/api-rate-limit-token-bucket`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
