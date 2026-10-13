@@ -390,3 +390,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #66: Add workspace dropdown allowing users to switch active tenant context
+- **Branch:** `ui/active-workspace-switcher-menu`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
