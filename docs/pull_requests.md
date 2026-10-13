@@ -306,3 +306,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #52: Implement AES-256-GCM envelope encryption for sensitive posture evidence notes
+- **Branch:** `feat/database-field-encryption`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
