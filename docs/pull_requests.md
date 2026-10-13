@@ -114,3 +114,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #20: Implement TaskEvidence model for screenshot references and external URLs
+- **Branch:** `feat/task-evidence-attachments`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
