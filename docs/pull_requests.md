@@ -360,3 +360,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #61: Render real-time application database metric cards on public landing page
+- **Branch:** `ui/live-data-metrics-banner`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
