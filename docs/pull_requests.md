@@ -72,3 +72,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #13: Design Assessment model with draft, submitted, under review, and completed states
+- **Branch:** `feat/assessment-model-schema`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
