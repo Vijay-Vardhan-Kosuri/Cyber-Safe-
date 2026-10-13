@@ -1,0 +1,201 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}CyberSafe — Take Control of Your Cybersecurity Posture{% endblock %}
+
+{% block content %}
+<!-- Striking Hero Section (Conference Style) -->
+<section class="hero-conference text-center position-relative">
+  <div class="container py-lg-4">
+    <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill mb-4" style="background: rgba(0, 102, 204, 0.2); border: 1px solid rgba(0, 240, 255, 0.4);">
+      <span class="brand-fin-icon" style="width: 16px; height: 16px;"></span>
+      <span class="text-cyan small fw-semibold text-uppercase tracking-wider">Cybersecurity Posture Operations 2026</span>
+    </div>
+
+    <h1 class="hero-headline display-3">
+      Take Control of Your <br>
+      <span class="hero-gradient-text">Cybersecurity Posture</span>
+    </h1>
+
+    <p class="lead text-muted-cs mx-auto mb-4" style="max-width: 760px; font-size: 1.25rem;">
+      Evaluate organizational security practices, benchmark missing defenses against CIS Controls and NIST frameworks, assign evidence-backed remediation, and track cybersecurity readiness across teams.
+    </p>
+
+    <div class="d-flex flex-wrap justify-content-center gap-3 mb-5">
+      {% if user.is_authenticated %}
+        <a href="{% url 'accounts:dashboard_redirect' %}" class="btn btn-cyber-cyan btn-lg px-4 py-3">
+          <i class="bi bi-speedometer2 me-2"></i> Access Active Dashboard
+        </a>
+      {% else %}
+        <a href="{% url 'accounts:login' %}" class="btn btn-cyber-cyan btn-lg px-4 py-3">
+          <i class="bi bi-box-arrow-in-right me-2"></i> Get Started
+        </a>
+      {% endif %}
+      <a href="#features" class="btn btn-cyber-outline btn-lg px-4 py-3">
+        <i class="bi bi-compass me-2 text-cyan"></i> Explore Platform Capabilities
+      </a>
+    </div>
+
+    <!-- Live Application Data Metrics Banner -->
+    <div class="row g-3 justify-content-center mt-3">
+      <div class="col-6 col-md-3">
+        <div class="cs-kpi-card text-center py-3">
+          <div class="kpi-value text-cyan">{{ org_count|default:2 }}</div>
+          <div class="kpi-label">Active Workspaces</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="cs-kpi-card text-center py-3">
+          <div class="kpi-value text-white">{{ category_count|default:10 }}</div>
+          <div class="kpi-label">Defense Categories</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="cs-kpi-card text-center py-3">
+          <div class="kpi-value text-cyan">{{ template_count|default:3 }}</div>
+          <div class="kpi-label">Published Frameworks</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="cs-kpi-card text-center py-3">
+          <div class="kpi-value text-white">100%</div>
+          <div class="kpi-label">Tenant Isolated</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Visual 4-Step Posture Workflow -->
+<section id="workflow" class="py-5" style="background-color: var(--cs-navy-dark); border-top: 1px solid var(--cs-navy-border); border-bottom: 1px solid var(--cs-navy-border);">
+  <div class="container py-4">
+    <div class="text-center mb-5">
+      <h6 class="text-cyan text-uppercase fw-bold letter-spacing-1">End-to-End Methodology</h6>
+      <h2 class="display-6 fw-bold text-white">The CyberSafe Posture Lifecycle</h2>
+      <p class="text-muted-cs mx-auto" style="max-width: 650px;">A disciplined, continuous cycle turning policy expectations into verified technical safeguards.</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3">
+        <div class="cs-card cs-fin-card h-100 p-4">
+          <div class="fs-1 text-cyan mb-3"><i class="bi bi-shield-lock"></i></div>
+          <div class="badge bg-dark border border-secondary text-cyan mb-2">Step 01</div>
+          <h4 class="h5 text-white mb-2">Scope & Model</h4>
+          <p class="text-muted-cs small mb-0">Platform Super Admins and Org Admins configure multi-tenant organizations, establish user roles, and assign versioned CIS/NIST baselines.</p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3">
+        <div class="cs-card cs-fin-card h-100 p-4">
+          <div class="fs-1 text-cyan mb-3"><i class="bi bi-card-checklist"></i></div>
+          <div class="badge bg-dark border border-secondary text-cyan mb-2">Step 02</div>
+          <h4 class="h5 text-white mb-2">Assess & Score</h4>
+          <p class="text-muted-cs small mb-0">Employees complete interactive response questionnaires. CyberSafe calculates a transparent compliance score excluding non-applicable items.</p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3">
+        <div class="cs-card cs-fin-card h-100 p-4">
+          <div class="fs-1 text-cyan mb-3"><i class="bi bi-tools"></i></div>
+          <div class="badge bg-dark border border-secondary text-cyan mb-2">Step 03</div>
+          <h4 class="h5 text-white mb-2">Remediate & Submit</h4>
+          <p class="text-muted-cs small mb-0">Deficiencies automatically spawn remediation tasks. Assigned staff document corrective actions, upload evidence, and submit for verification.</p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3">
+        <div class="cs-card cs-fin-card h-100 p-4">
+          <div class="fs-1 text-cyan mb-3"><i class="bi bi-patch-check-fill"></i></div>
+          <div class="badge bg-dark border border-secondary text-cyan mb-2">Step 04</div>
+          <h4 class="h5 text-white mb-2">Verify & Report</h4>
+          <p class="text-muted-cs small mb-0">Security Analysts independently verify evidence, close resolved tickets, update organization dashboards, and generate CSV reports.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Core Platform Capabilities -->
+<section id="features" class="py-5">
+  <div class="container py-4">
+    <div class="text-center mb-5">
+      <h6 class="text-cyan text-uppercase fw-bold letter-spacing-1">Engineering Rigor</h6>
+      <h2 class="display-6 fw-bold text-white">Enterprise Cybersecurity Capabilities</h2>
+      <p class="text-muted-cs mx-auto" style="max-width: 650px;">Architected with strict multi-tenancy, server-side RBAC, and real-time database analytics.</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6">
+        <div class="cs-card h-100 p-4">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <div class="p-2 rounded bg-dark border border-primary text-cyan"><i class="bi bi-people-fill fs-4"></i></div>
+            <h5 class="text-white mb-0">Strict 4-Tier RBAC</h5>
+          </div>
+          <p class="text-muted-cs small mb-0">Platform Super Admin, Organization Admin, Security Analyst, and Employee roles enforced at the ORM and view layer. No client-side bypasses.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="cs-card h-100 p-4">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <div class="p-2 rounded bg-dark border border-primary text-cyan"><i class="bi bi-safe2-fill fs-4"></i></div>
+            <h5 class="text-white mb-0">Multi-Tenant Isolation</h5>
+          </div>
+          <p class="text-muted-cs small mb-0">Complete tenant separation. Assessments, remediation tasks, and evidence submitted by one organization cannot be queried by another.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="cs-card h-100 p-4">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <div class="p-2 rounded bg-dark border border-primary text-cyan"><i class="bi bi-calculator-fill fs-4"></i></div>
+            <h5 class="text-white mb-0">Transparent Scoring</h5>
+          </div>
+          <p class="text-muted-cs small mb-0">Deterministic scoring weighted by priority and category. Never scores N/A controls as failures or unanswered items as compliant.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="cs-card h-100 p-4">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <div class="p-2 rounded bg-dark border border-primary text-cyan"><i class="bi bi-arrow-repeat fs-4"></i></div>
+            <h5 class="text-white mb-0">Remediation State Machine</h5>
+          </div>
+          <p class="text-muted-cs small mb-0">Structured transitions: <code>Open &rarr; In Progress &rarr; Submitted for Review &rarr; Verified</code>. Reviewers may return tasks with explanations.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="cs-card h-100 p-4">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <div class="p-2 rounded bg-dark border border-primary text-cyan"><i class="bi bi-file-earmark-spreadsheet-fill fs-4"></i></div>
+            <h5 class="text-white mb-0">Audit & CSV Export</h5>
+          </div>
+          <p class="text-muted-cs small mb-0">Immutable audit trails recording user logins, role changes, and reviews. Complete CSV exports for compliance auditors and leadership.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="cs-card h-100 p-4">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <div class="p-2 rounded bg-dark border border-primary text-cyan"><i class="bi bi-database-check fs-4"></i></div>
+            <h5 class="text-white mb-0">MySQL 8 & PyMySQL</h5>
+          </div>
+          <p class="text-muted-cs small mb-0">Production-ready MySQL 8 database integration with foreign keys, transactional integrity, and automated fallback for local test runs.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Call to Action Banner -->
+<section class="py-5" style="background: linear-gradient(135deg, rgba(8, 18, 32, 0.95), rgba(12, 26, 46, 0.95)); border-top: 1px solid var(--cs-navy-border);">
+  <div class="container text-center py-4">
+    <h3 class="display-6 fw-bold text-white mb-3">Ready to Elevate Your Security Posture?</h3>
+    <p class="text-muted-cs mx-auto mb-4" style="max-width: 600px;">Log in to your authorized workspace to start assessing controls, reviewing evidence, and tracking defense improvements.</p>
+    <a href="{% url 'accounts:login' %}" class="btn btn-cyber-cyan btn-lg px-4">
+      <i class="bi bi-shield-check me-2"></i> Access CyberSafe Portal
+    </a>
+  </div>
+</section>
+{% endblock %}

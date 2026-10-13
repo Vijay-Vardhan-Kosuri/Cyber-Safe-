@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Cybersecurity Posture Notice & Limitations — CyberSafe{% endblock %}
+
+{% block content %}
+<div class="container py-5" style="max-width: 800px;">
+  <div class="cs-card p-5">
+    <div class="d-flex align-items-center gap-3 mb-4">
+      <i class="bi bi-shield-exclamation text-warning display-4"></i>
+      <div>
+        <h2 class="text-white fw-bold mb-1">Product Scope & Limitation Notice</h2>
+        <span class="text-cyan small fw-semibold">Standard Operating Principle</span>
+      </div>
+    </div>
+
+    <div class="cs-disclaimer-box mb-4">
+      <strong>Core Principle:</strong> CyberSafe is a cybersecurity posture management, assessment, and remediation coordination application. It does not scan user hardware devices for active rootkits, sniff live network packets, detect zero-day exploits in flight, or certify any organization as immune to cyberattacks.
+    </div>
+
+    <h5 class="text-white fw-bold mb-2">1. Attestation-Based Evaluation</h5>
+    <p class="text-muted-cs small mb-4">
+      All compliance scores, category ratings, and posture indicators generated within CyberSafe are computed strictly from questionnaire responses, submitted technical evidence, and authorized administrative reviews. They represent documented organizational practices, not real-time intrusion guarantees.
+    </p>
+
+    <h5 class="text-white fw-bold mb-2">2. Checklist Completion Does Not Guarantee Security</h5>
+    <p class="text-muted-cs small mb-4">
+      A 100% compliance score reflects adherence to the selected checklist template (such as CIS Controls or NIST CSF). It does not substitute for ongoing security operations, red team exercises, dynamic vulnerability scanning, or automated endpoint threat hunting.
+    </p>
+
+    <h5 class="text-white fw-bold mb-2">3. Recommended Complementary Controls</h5>
+    <p class="text-muted-cs small mb-4">
+      Organizations utilizing CyberSafe are encouraged to maintain active Endpoint Detection and Response (EDR), managed Security Operations Centers (SOC), annual independent penetration testing, and continuous zero-trust network monitoring in conjunction with this posture management framework.
+    </p>
+
+    <a href="{% url 'core:landing' %}" class="btn btn-cyber-cyan">Return to Homepage</a>
+  </div>
+</div>
+{% endblock %}

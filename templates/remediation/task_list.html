@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block title %}Remediation Task Management — CyberSafe{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-lg-4 py-4">
+  <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+    <div>
+      <h2 class="h3 fw-bold text-white mb-0"><i class="bi bi-tools text-cyan me-2"></i> Remediation Management</h2>
+      <p class="text-muted-cs small mb-0">Track corrective actions from identified gaps through independent verification.</p>
+    </div>
+    <div class="d-flex gap-2">
+      <a href="{% url 'analytics:export_remediation_csv' %}" class="btn btn-cyber-outline btn-sm">
+        <i class="bi bi-file-earmark-spreadsheet me-1 text-cyan"></i> Export Backlog CSV
+      </a>
+    </div>
+  </div>
+
+  <!-- Status Tabs -->
+  <div class="d-flex flex-wrap gap-2 mb-4">
+    <a href="{% url 'remediation:task_list' %}" class="btn btn-sm {% if not request.GET.status %}btn-cyber-cyan{% else %}btn-cyber-outline{% endif %}">
+      All ({{ total_count }})
+    </a>
+    <a href="{% url 'remediation:task_list' %}?status=OPEN" class="btn btn-sm {% if request.GET.status == 'OPEN' %}btn-cyber-cyan{% else %}btn-cyber-outline{% endif %}">
+      Open ({{ open_count }})
+    </a>
+    <a href="{% url 'remediation:task_list' %}?status=IN_PROGRESS" class="btn btn-sm {% if request.GET.status == 'IN_PROGRESS' %}btn-cyber-cyan{% else %}btn-cyber-outline{% endif %}">
+      In Progress ({{ in_progress_count }})
+    </a>
+    <a href="{% url 'remediation:task_list' %}?status=SUBMITTED_FOR_REVIEW" class="btn btn-sm {% if request.GET.status == 'SUBMITTED_FOR_REVIEW' %}btn-cyber-cyan{% else %}btn-cyber-outline{% endif %}">
+      Awaiting Review ({{ submitted_count }})
+    </a>
+    <a href="{% url 'remediation:task_list' %}?status=VERIFIED" class="btn btn-sm {% if request.GET.status == 'VERIFIED' %}btn-cyber-cyan{% else %}btn-cyber-outline{% endif %}">
+      Verified Closed ({{ verified_count }})
+    </a>
+  </div>
+
+  <div class="cs-card">
+    <div class="table-responsive">
+      <table class="table table-cyber mb-0 align-middle">
+        <thead>
+          <tr>
+            <th>Priority</th>
+            <th>Task Title</th>
+            <th>Linked Control</th>
+            <th>Assigned To</th>
+            <th>Due Date</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for t in tasks %}
+            <tr>
+              <td><span class="badge badge-priority-{{ t.priority|lower }}">{{ t.priority }}</span></td>
+              <td>
+                <strong class="text-white d-block">{{ t.title }}</strong>
+                <small class="text-muted-cs">{{ t.description|truncatechars:65 }}</small>
+              </td>
+              <td>
+                {% if t.item %}
+                  <code>{{ t.item.control_code }}</code>
+                {% else %}
+                  <span class="text-muted-cs">-</span>
+                {% endif %}
+              </td>
+              <td class="text-white small">{{ t.assigned_to.full_name }}</td>
+              <td>
+                <span class="{% if t.is_overdue %}text-danger fw-bold{% else %}text-muted-cs{% endif %} small">
+                  {{ t.due_date|date:"M d, Y" }}
+                  {% if t.is_overdue %}<span class="badge bg-danger ms-1">OVERDUE</span>{% endif %}
+                </span>
+              </td>
+              <td>
+                <span class="badge badge-task-{{ t.status|lower }}">{{ t.get_status_display }}</span>
+              </td>
+              <td>
+                <a href="{% url 'remediation:task_detail' t.id %}" class="btn btn-sm btn-cyber-outline py-1 px-3">
+                  Inspect & Update <i class="bi bi-arrow-right ms-1"></i>
+                </a>
+              </td>
+            </tr>
+          {% empty %}
+            <tr><td colspan="7" class="text-center text-muted-cs py-5">No remediation tasks matching filter.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

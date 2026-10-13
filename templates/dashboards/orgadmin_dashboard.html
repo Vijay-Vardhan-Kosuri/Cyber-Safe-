@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+
+{% block title %}Org Admin Portal — {{ organization.name }}{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-lg-4 py-4">
+  <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+    <div>
+      <div class="badge badge-role badge-role-orgadmin mb-1"><i class="bi bi-building me-1"></i> Organization Workspace</div>
+      <h2 class="h3 fw-bold text-white mb-0">{{ organization.name }}</h2>
+      <p class="text-muted-cs small mb-0">{{ organization.industry }} &bull; Domain: <code>{{ organization.domain }}</code></p>
+    </div>
+    <div class="d-flex gap-2">
+      <a href="{% url 'assessments:assessment_create' %}" class="btn btn-cyber-cyan btn-sm">
+        <i class="bi bi-plus-lg me-1"></i> New Assessment
+      </a>
+      <a href="{% url 'organizations:member_list' %}" class="btn btn-cyber-outline btn-sm">
+        <i class="bi bi-person-plus me-1 text-cyan"></i> Invite Colleague
+      </a>
+      <a href="{% url 'analytics:overview' %}" class="btn btn-cyber-outline btn-sm">
+        <i class="bi bi-file-earmark-bar-graph me-1 text-cyan"></i> Reports
+      </a>
+    </div>
+  </div>
+
+  <!-- KPI Row -->
+  <div class="row g-3 mb-4">
+    <div class="col-6 col-md-3">
+      <div class="cs-kpi-card">
+        <div class="kpi-label">Average Posture Score</div>
+        <div class="kpi-value text-cyan">{{ avg_posture_score }}%</div>
+        <small class="text-muted-cs">Completed Assessments: {{ completed_assessments }}</small>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="cs-kpi-card">
+        <div class="kpi-label">Active Team Members</div>
+        <div class="kpi-value text-white">{{ members_count }}</div>
+        <small class="text-muted-cs">Assigned & Licensed</small>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="cs-kpi-card">
+        <div class="kpi-label">Open Remediation Tasks</div>
+        <div class="kpi-value text-warning">{{ open_tasks_count }}</div>
+        <small class="text-muted-cs">Verified: {{ verified_tasks_count }}</small>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="cs-kpi-card">
+        <div class="kpi-label">Overdue Tasks</div>
+        <div class="kpi-value text-danger">{{ overdue_tasks_count }}</div>
+        <small class="text-muted-cs">Require Immediate Escalation</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-4 mb-4">
+    <!-- Recent Assessments -->
+    <div class="col-lg-7">
+      <div class="cs-card h-100">
+        <div class="cs-card-header">
+          <h5 class="mb-0 text-white"><i class="bi bi-clipboard-data-fill text-cyan me-2"></i> Security Assessments</h5>
+          <a href="{% url 'assessments:assessment_list' %}" class="btn btn-sm btn-cyber-outline">View All</a>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-cyber mb-0 align-middle">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Assigned To</th>
+                <th>Status</th>
+                <th>Score</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for a in recent_assessments %}
+                <tr>
+                  <td class="fw-bold text-white">{{ a.title }}</td>
+                  <td class="text-muted-cs small">{{ a.assigned_to.full_name }}</td>
+                  <td>
+                    {% if a.status == 'COMPLETED' %}
+                      <span class="badge badge-compliant">Completed</span>
+                    {% elif a.status == 'SUBMITTED' %}
+                      <span class="badge badge-task-review">Under Review</span>
+                    {% else %}
+                      <span class="badge badge-task-progress">Draft</span>
+                    {% endif %}
+                  </td>
+                  <td class="fw-bold {% if a.score >= 85 %}text-success{% elif a.score >= 60 %}text-warning{% else %}text-danger{% endif %}">
+                    {{ a.score }}%
+                  </td>
+                  <td>
+                    <a href="{% url 'assessments:assessment_detail' a.id %}" class="btn btn-sm btn-cyber-outline py-1 px-2">Review</a>
+                  </td>
+                </tr>
+              {% empty %}
+                <tr><td colspan="5" class="text-center text-muted-cs py-4">No assessments initiated yet.</td></tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Outstanding Remediation Tasks -->
+    <div class="col-lg-5">
+      <div class="cs-card h-100">
+        <div class="cs-card-header">
+          <h5 class="mb-0 text-white"><i class="bi bi-tools text-cyan me-2"></i> Active Remediation Tasks</h5>
+          <a href="{% url 'remediation:task_list' %}" class="btn btn-sm btn-cyber-outline">Board</a>
+        </div>
+        <div class="cs-card-body p-0">
+          <div class="list-group list-group-flush bg-transparent">
+            {% for t in recent_tasks %}
+              <a href="{% url 'remediation:task_detail' t.id %}" class="list-group-item list-group-item-action bg-transparent border-secondary text-white py-3">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <span class="badge badge-priority-{{ t.priority|lower }}">{{ t.get_priority_display }}</span>
+                  <span class="badge badge-task-{{ t.status|lower }}">{{ t.get_status_display }}</span>
+                </div>
+                <div class="fw-bold text-white small mb-1">{{ t.title }}</div>
+                <div class="d-flex justify-content-between text-muted-cs small">
+                  <span><i class="bi bi-person me-1"></i> {{ t.assigned_to.first_name }}</span>
+                  <span class="{% if t.is_overdue %}text-danger fw-bold{% endif %}">
+                    <i class="bi bi-calendar-event me-1"></i> {{ t.due_date|date:"M d" }}
+                  </span>
+                </div>
+              </a>
+            {% empty %}
+              <div class="p-3 text-muted-cs text-center">No open remediation tasks.</div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

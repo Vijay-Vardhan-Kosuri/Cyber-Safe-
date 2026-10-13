@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+
+{% block title %}Team & Access Management — CyberSafe{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-lg-4 py-4">
+  <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+    <div>
+      <h2 class="h3 fw-bold text-white mb-0"><i class="bi bi-people-fill text-cyan me-2"></i> Team & Membership Governance</h2>
+      <p class="text-muted-cs small mb-0">{{ active_membership.organization.name }} &bull; Manage authorized accounts and invite colleagues.</p>
+    </div>
+    <button type="button" class="btn btn-cyber-cyan btn-sm" data-bs-toggle="modal" data-bs-target="#inviteModal">
+      <i class="bi bi-person-plus-fill me-1"></i> Send New Invitation
+    </button>
+  </div>
+
+  <div class="row g-4">
+    <!-- Active Members Table -->
+    <div class="col-lg-8">
+      <div class="cs-card">
+        <div class="cs-card-header">
+          <h5 class="mb-0 text-white"><i class="bi bi-shield-lock-fill text-cyan me-2"></i> Workspace Members ({{ memberships.count }})</h5>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-cyber mb-0 align-middle">
+            <thead>
+              <tr>
+                <th>Member</th>
+                <th>Role</th>
+                <th>Department</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for m in memberships %}
+                <tr>
+                  <td>
+                    <strong class="text-white d-block">{{ m.user.full_name }}</strong>
+                    <small class="text-muted-cs">{{ m.user.email }}</small>
+                  </td>
+                  <td>
+                    <span class="badge badge-role badge-role-{{ m.role|lower }}">{{ m.get_role_display }}</span>
+                  </td>
+                  <td class="text-muted-cs small">{{ m.department }}</td>
+                  <td>
+                    {% if m.status == 'ACTIVE' %}
+                      <span class="badge bg-success-subtle text-success border border-success">Active</span>
+                    {% else %}
+                      <span class="badge bg-danger-subtle text-danger border border-danger">Suspended</span>
+                    {% endif %}
+                  </td>
+                  <td>
+                    {% if m.user != user %}
+                      <form method="post" action="{% url 'organizations:toggle_member_status' m.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-sm btn-cyber-outline py-1 px-2">
+                          {% if m.status == 'ACTIVE' %}Suspend{% else %}Activate{% endif %}
+                        </button>
+                      </form>
+                    {% else %}
+                      <span class="text-muted-cs small">You</span>
+                    {% endif %}
+                  </td>
+                </tr>
+              {% empty %}
+                <tr><td colspan="5" class="text-center text-muted-cs py-4">No members found.</td></tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pending Invitations -->
+    <div class="col-lg-4">
+      <div class="cs-card">
+        <div class="cs-card-header">
+          <h5 class="mb-0 text-white"><i class="bi bi-envelope-check-fill text-cyan me-2"></i> Pending Invitations</h5>
+        </div>
+        <div class="cs-card-body p-0">
+          <div class="list-group list-group-flush bg-transparent">
+            {% for inv in pending_invitations %}
+              <div class="list-group-item bg-transparent border-secondary text-white py-3">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <strong class="text-cyan small">{{ inv.email }}</strong>
+                  <span class="badge badge-role badge-role-{{ inv.role|lower }}">{{ inv.get_role_display }}</span>
+                </div>
+                <small class="text-muted-cs d-block mb-2">Expires: {{ inv.expires_at|date:"M d, Y" }}</small>
+                <div class="input-group input-group-sm">
+                  <input type="text" class="form-control form-control-dark" readonly value="{{ request.scheme }}://{{ request.get_host }}{% url 'organizations:accept_invitation' inv.token %}">
+                </div>
+              </div>
+            {% empty %}
+              <div class="p-3 text-center text-muted-cs small">No pending invitations.</div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Send Invite -->
+<div class="modal fade modal-cyber" id="inviteModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form method="post" action="{% url 'organizations:invite_member' %}">
+        {% csrf_token %}
+        <div class="modal-header">
+          <h5 class="modal-title text-white">Invite Colleague to Workspace</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="form-label text-white">Email Address *</label>
+            {{ invite_form.email }}
+          </div>
+          <div class="mb-3">
+            <label class="form-label text-white">Workspace Role *</label>
+            {{ invite_form.role }}
+          </div>
+          <div class="mb-3">
+            <label class="form-label text-white">Department</label>
+            {{ invite_form.department }}
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-cyber-outline" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-cyber-cyan">Generate Secure Invitation</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
