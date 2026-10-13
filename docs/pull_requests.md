@@ -198,3 +198,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #34: Implement regulatory mapping engine for SOC2, HIPAA, and ISO 27001
+- **Branch:** `feat/compliance-mappings-engine`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
