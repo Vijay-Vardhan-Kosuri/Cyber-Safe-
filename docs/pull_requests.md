@@ -282,3 +282,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #48: Add SAML 2.0 IdP metadata XML parser and entity descriptor validator
+- **Branch:** `feat/saml-sso-metadata-parser`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
