@@ -444,3 +444,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #75: Build remediation verification queue card with direct evidence review action
+- **Branch:** `ui/analyst-verification-queue-drawer`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
