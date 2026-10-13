@@ -66,3 +66,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #12: Add ChecklistItem model with Critical, High, Medium, Low priorities
+- **Branch:** `feat/control-items-priority-weights`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
