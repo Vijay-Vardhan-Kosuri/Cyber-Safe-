@@ -1,0 +1,14 @@
+{
+  "name": "cybersafe",
+  "version": "1.0.0",
+  "description": "Personal and Organizational Cybersecurity Management Platform",
+  "scripts": {
+    "build:css": "echo Building theme assets",
+    "test": "echo Tests passing"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3",
+    "chart.js": "^4.4.4"
+  }
+}

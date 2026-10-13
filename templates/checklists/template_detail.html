@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ template.title }} — Framework Controls{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-lg-4 py-4">
+  <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+    <div>
+      <a href="{% url 'checklists:template_list' %}" class="text-muted-cs small text-decoration-none mb-1 d-inline-block">
+        <i class="bi bi-arrow-left me-1"></i> Back to Frameworks
+      </a>
+      <h2 class="h3 fw-bold text-white mb-0">{{ template.title }} <small class="text-muted-cs fs-6">v{{ template.version }}</small></h2>
+      <p class="text-muted-cs small mb-0">{{ template.description }}</p>
+    </div>
+    {% if request.user_role == 'SUPER_ADMIN' or request.user_role == 'ORG_ADMIN' %}
+      <a href="{% url 'assessments:assessment_create' %}" class="btn btn-cyber-cyan btn-sm">
+        <i class="bi bi-clipboard-plus me-1"></i> Launch Assessment with this Framework
+      </a>
+    {% endif %}
+  </div>
+
+  <!-- Grouped Categories Accordion -->
+  <div class="accordion accordion-flush" id="frameworkAccordion">
+    {% for category, items in grouped_items.items %}
+      <div class="cs-card mb-3">
+        <div class="cs-card-header" id="heading{{ category.id }}">
+          <div class="d-flex align-items-center gap-3 w-100 justify-content-between">
+            <div class="d-flex align-items-center gap-2">
+              <i class="bi {{ category.icon }} text-cyan fs-5"></i>
+              <div>
+                <h5 class="text-white mb-0">{{ category.name }}</h5>
+                <small class="text-muted-cs">{{ category.description }}</small>
+              </div>
+            </div>
+            <span class="badge bg-dark border border-secondary text-cyan">{{ items|length }} Controls</span>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-cyber mb-0 align-middle">
+            <thead>
+              <tr>
+                <th style="width: 120px;">Code</th>
+                <th>Security Practice Title</th>
+                <th>Actionable Guidance</th>
+                <th style="width: 120px;">Priority</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for item in items %}
+                <tr>
+                  <td><code>{{ item.control_code }}</code></td>
+                  <td>
+                    <strong class="text-white d-block">{{ item.title }}</strong>
+                    <small class="text-muted-cs">{{ item.description }}</small>
+                  </td>
+                  <td class="text-cyan small">{{ item.guidance }}</td>
+                  <td>
+                    <span class="badge badge-priority-{{ item.priority|lower }}">{{ item.priority }}</span>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    {% empty %}
+      <div class="text-center py-5 text-muted-cs">No controls defined in this framework yet.</div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+
+{% block title %}Answering: {{ assessment.title }} — CyberSafe{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-lg-4 py-4">
+  <!-- Wizard Header Bar -->
+  <div class="cs-card mb-4 p-3 sticky-top" style="top: 70px; z-index: 1020; backdrop-filter: blur(8px);">
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
+      <div>
+        <span class="badge bg-dark border border-secondary text-cyan mb-1">{{ assessment.template.title }}</span>
+        <h3 class="h4 fw-bold text-white mb-0">{{ assessment.title }}</h3>
+      </div>
+      <div class="d-flex align-items-center gap-3">
+        <div class="text-end d-none d-md-block">
+          <small class="text-muted-cs d-block">Completion Progress</small>
+          <strong class="text-cyan" id="wizard-progress-count">{{ assessment.completion_percentage }}%</strong>
+        </div>
+        <div class="progress bg-dark border border-secondary" style="width: 140px; height: 10px;">
+          <div class="progress-bar bg-info" id="wizard-progress-bar" style="width: {{ assessment.completion_percentage }}%;"></div>
+        </div>
+        <button type="submit" form="assessment-wizard-form" name="action" value="save_draft" class="btn btn-cyber-outline btn-sm">
+          <i class="bi bi-save me-1"></i> Save Draft
+        </button>
+        <button type="submit" form="assessment-wizard-form" name="action" value="submit" class="btn btn-cyber-cyan btn-sm">
+          <i class="bi bi-send-check me-1"></i> Submit Assessment
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <form method="post" id="assessment-wizard-form">
+    {% csrf_token %}
+
+    {% for category, responses in grouped_responses.items %}
+      <div class="cs-card mb-4">
+        <div class="cs-card-header">
+          <div class="d-flex align-items-center gap-2">
+            <i class="bi {{ category.icon }} text-cyan fs-5"></i>
+            <h5 class="text-white mb-0">{{ category.name }}</h5>
+          </div>
+          <span class="badge bg-dark border border-secondary text-white">{{ responses|length }} Controls</span>
+        </div>
+        <div class="cs-card-body p-0">
+          <div class="list-group list-group-flush bg-transparent">
+            {% for resp in responses %}
+              <div class="list-group-item bg-transparent border-secondary text-white p-4">
+                <div class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-2">
+                  <div>
+                    <span class="badge bg-dark border border-info text-cyan me-2">[{{ resp.item.control_code }}]</span>
+                    <strong class="text-white fs-6">{{ resp.item.title }}</strong>
+                    {% if resp.item.is_required %}
+                      <span class="badge bg-danger-subtle text-danger border border-danger ms-2">Mandatory</span>
+                    {% endif %}
+                  </div>
+                  <span class="badge badge-priority-{{ resp.item.priority|lower }}">{{ resp.item.priority }}</span>
+                </div>
+
+                <p class="text-muted-cs small mb-2">{{ resp.item.description }}</p>
+                <div class="p-2 rounded bg-dark border border-secondary small text-cyan mb-3">
+                  <i class="bi bi-lightbulb me-1"></i> <strong>Guidance:</strong> {{ resp.item.guidance }}
+                </div>
+
+                <!-- Response Radio Options -->
+                <div class="row g-2 mb-3">
+                  <div class="col-6 col-md-3">
+                    <label class="w-100 p-2 rounded border border-secondary text-center cursor-pointer {% if resp.response == 'COMPLIANT' %}bg-success-subtle text-success border-success{% endif %}">
+                      <input type="radio" class="response-radio d-none" name="resp_{{ resp.id }}" value="COMPLIANT" {% if resp.response == 'COMPLIANT' %}checked{% endif %}>
+                      <i class="bi bi-check-circle-fill me-1"></i> Compliant
+                    </label>
+                  </div>
+                  <div class="col-6 col-md-3">
+                    <label class="w-100 p-2 rounded border border-secondary text-center cursor-pointer {% if resp.response == 'NEEDS_IMPROVEMENT' %}bg-danger-subtle text-danger border-danger{% endif %}">
+                      <input type="radio" class="response-radio d-none" name="resp_{{ resp.id }}" value="NEEDS_IMPROVEMENT" {% if resp.response == 'NEEDS_IMPROVEMENT' %}checked{% endif %}>
+                      <i class="bi bi-x-circle-fill me-1"></i> Needs Improvement
+                    </label>
+                  </div>
+                  <div class="col-6 col-md-3">
+                    <label class="w-100 p-2 rounded border border-secondary text-center cursor-pointer {% if resp.response == 'NOT_APPLICABLE' %}bg-secondary-subtle text-white{% endif %}">
+                      <input type="radio" class="response-radio d-none" name="resp_{{ resp.id }}" value="NOT_APPLICABLE" {% if resp.response == 'NOT_APPLICABLE' %}checked{% endif %}>
+                      <i class="bi bi-slash-circle me-1"></i> Not Applicable
+                    </label>
+                  </div>
+                  <div class="col-6 col-md-3">
+                    <label class="w-100 p-2 rounded border border-secondary text-center cursor-pointer {% if resp.response == 'NOT_ASSESSED' %}border-warning text-warning{% endif %}">
+                      <input type="radio" class="response-radio d-none" name="resp_{{ resp.id }}" value="NOT_ASSESSED" {% if resp.response == 'NOT_ASSESSED' %}checked{% endif %}>
+                      <i class="bi bi-question-circle me-1"></i> Not Assessed
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Notes & Evidence Reference -->
+                <div class="row g-2">
+                  <div class="col-md-7">
+                    <input type="text" name="notes_{{ resp.id }}" value="{{ resp.notes }}" class="form-control form-control-sm form-control-dark" placeholder="Implementation notes, tool names, or policy remarks...">
+                  </div>
+                  <div class="col-md-5">
+                    <input type="text" name="evidence_{{ resp.id }}" value="{{ resp.evidence_reference }}" class="form-control form-control-sm form-control-dark" placeholder="Evidence ID (e.g. AuditDoc #412, Jira SEC-99)">
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+
+    <!-- Bottom Submit Buttons -->
+    <div class="d-flex justify-content-between p-3 cs-card mb-5">
+      <a href="{% url 'assessments:assessment_list' %}" class="btn btn-cyber-outline">Exit</a>
+      <div class="d-flex gap-2">
+        <button type="submit" name="action" value="save_draft" class="btn btn-cyber-outline">Save Draft</button>
+        <button type="submit" name="action" value="submit" class="btn btn-cyber-cyan">Finalize & Submit Assessment</button>
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock %}

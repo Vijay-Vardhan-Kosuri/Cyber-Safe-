@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "cybersafe"
+version = "1.0.0"
+description = "Personal and Organizational Cybersecurity Management Platform"
+authors = ["CyberSafe Team <dev@cybersafe.local>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+Django = "^5.1.0"
+asgiref = "^3.8.1"
+sqlparse = "^0.5.0"
+PyMySQL = "^1.1.1"
+cryptography = "^43.0.0"
+python-dotenv = "^1.0.1"
+python-dateutil = "^2.9.0"
+requests = "^2.32.0"
+Pillow = "^10.4.0"
+reportlab = "^4.2.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.0"
+pytest-django = "^4.9.0"
+ruff = "^0.6.0"
+coverage = "^7.6.0"
+bandit = "^1.7.9"
+pip-audit = "^2.7.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
