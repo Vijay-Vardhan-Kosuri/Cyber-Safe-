@@ -630,3 +630,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #106: Implement lightbox preview modal for image and PDF evidence documents
+- **Branch:** `ui/evidence-lightbox-preview`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
