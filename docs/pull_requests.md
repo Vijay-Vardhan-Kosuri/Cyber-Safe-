@@ -402,3 +402,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #68: Create Super Admin KPI summary cards for global orgs, users, and baselines
+- **Branch:** `ui/superadmin-dashboard-kpis`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
