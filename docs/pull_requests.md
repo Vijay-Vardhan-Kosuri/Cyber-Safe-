@@ -396,3 +396,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #67: Render dynamic user initials badge and profile management dropdown
+- **Branch:** `ui/user-initials-avatar-dropdown`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
