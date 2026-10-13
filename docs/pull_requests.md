@@ -564,3 +564,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #95: Configure dark-theme Chart.js Category Posture Radar visualization
+- **Branch:** `ui/chartjs-radar-posture-setup`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
