@@ -594,3 +594,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #100: Add persistent theme preference toggle with midnight-navy and daylight contrast
+- **Branch:** `ui/dark-light-mode-toggle`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
