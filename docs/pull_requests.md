@@ -558,3 +558,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #94: Implement modal dialog for publishing mandatory organizational policies
+- **Branch:** `ui/policy-publishing-modal-form`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
