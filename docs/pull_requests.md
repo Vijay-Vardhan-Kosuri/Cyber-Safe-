@@ -636,3 +636,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #107: Render micro-sparkline SVG charts inside organizational KPI summary cards
+- **Branch:** `ui/custom-metric-sparklines`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
