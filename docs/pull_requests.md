@@ -126,3 +126,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #22: Enable analysts to return tasks to In Progress with explanation feedback
+- **Branch:** `feat/task-return-rejection-notes`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
