@@ -300,3 +300,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #51: Detect concurrent geographical impossible travel in active user sessions
+- **Branch:** `feat/session-anomaly-detection`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
