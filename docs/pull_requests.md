@@ -84,3 +84,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #15: Implement transparent composite scoring formula with priority multipliers
+- **Branch:** `feat/scoring-formula-weights`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
