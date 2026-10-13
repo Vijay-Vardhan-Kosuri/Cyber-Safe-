@@ -36,3 +36,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #7: Create TenantContextMiddleware to resolve active organization per request
+- **Branch:** `feat/tenant-isolation-middleware`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
