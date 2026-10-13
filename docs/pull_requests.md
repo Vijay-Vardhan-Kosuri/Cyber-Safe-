@@ -96,3 +96,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #17: Calculate Low, Moderate, and High Risk posture levels based on critical gaps
+- **Branch:** `feat/risk-level-determination-rules`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
