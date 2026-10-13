@@ -624,3 +624,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #105: Build countdown warning modal before idle session timeout expiration
+- **Branch:** `ui/session-expiry-warning-modal`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
