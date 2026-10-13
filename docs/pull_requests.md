@@ -30,3 +30,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #6: Enforce 7-day expiration boundary on invitation acceptance
+- **Branch:** `feat/invitation-expiration-guard`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
