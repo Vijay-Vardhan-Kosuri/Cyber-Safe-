@@ -552,3 +552,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #93: Design invitation acceptance page with password establishment fields
+- **Branch:** `ui/accept-invitation-credential-form`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
