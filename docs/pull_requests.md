@@ -6,3 +6,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #2: Add 5-attempt brute force rate limiting and temporary account lock duration
+- **Branch:** `feat/failed-login-lockout`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
