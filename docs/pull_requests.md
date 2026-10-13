@@ -456,3 +456,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #77: Build Employee personal dashboard with assigned questionnaires card
+- **Branch:** `ui/employee-dashboard-layout`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
