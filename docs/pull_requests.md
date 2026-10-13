@@ -276,3 +276,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #47: Support delegated administration permissions for security department leads
+- **Branch:** `feat/rbac-delegated-admin`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
