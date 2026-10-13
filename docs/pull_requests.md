@@ -378,3 +378,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #64: Add prominent posture limitation notice box across landing and footer
+- **Branch:** `ui/posture-limitation-disclaimer-card`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
