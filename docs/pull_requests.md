@@ -12,3 +12,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #3: Create Organization model with domain mapping and tenant boundaries
+- **Branch:** `feat/multi-tenant-organizations`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
