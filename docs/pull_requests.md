@@ -234,3 +234,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #40: Add incident response escalation and tabletop drill tracking engines
+- **Branch:** `feat/incident-playbook-evaluator`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
