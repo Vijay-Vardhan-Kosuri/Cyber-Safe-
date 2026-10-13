@@ -228,3 +228,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #39: Implement network segmentation and egress filtering compliance checks
+- **Branch:** `feat/network-defense-heuristics`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
