@@ -156,3 +156,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #27: Implement immutable AuditEvent model capturing actor, IP, and context
+- **Branch:** `feat/immutable-audit-event-logger`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
