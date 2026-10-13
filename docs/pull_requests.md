@@ -246,3 +246,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #42: Create seed_cyber_data management command with 31 CIS controls and 4 roles
+- **Branch:** `feat/seed-cyber-data-command`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
