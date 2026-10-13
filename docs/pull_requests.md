@@ -570,3 +570,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #96: Configure responsive Domain Compliance Bar Chart with emerald/cyan bars
+- **Branch:** `ui/chartjs-domain-bar-chart-setup`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
