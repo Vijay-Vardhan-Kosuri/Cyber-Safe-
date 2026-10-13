@@ -480,3 +480,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #81: Build structured category accordion displaying controls and guidance
+- **Branch:** `ui/framework-category-accordion-detail`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
