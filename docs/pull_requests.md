@@ -108,3 +108,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #19: Enforce Open -> In Progress -> Submitted -> Verified state transitions
+- **Branch:** `feat/remediation-state-machine`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
