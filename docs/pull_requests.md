@@ -174,3 +174,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #30: Build CSV exporter for comprehensive assessment findings and assessor notes
+- **Branch:** `feat/assessment-csv-exporter`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
