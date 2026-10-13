@@ -534,3 +534,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #90: Build verification decision modal allowing analysts to verify or return tasks
+- **Branch:** `ui/analyst-verification-decision-modal`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
