@@ -180,3 +180,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #31: Implement CSV exporter for organizational remediation task backlog
+- **Branch:** `feat/remediation-backlog-csv-exporter`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
