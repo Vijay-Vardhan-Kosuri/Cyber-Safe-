@@ -318,3 +318,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #54: Enforce automated escalation notifications for breached remediation SLAs
+- **Branch:** `feat/vuln-remediation-slas`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
