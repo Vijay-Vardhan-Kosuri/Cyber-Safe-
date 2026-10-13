@@ -264,3 +264,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #45: Implement CVSS v4.0 base, threat, and environmental score calculator
+- **Branch:** `feat/cvss-v4-calculator`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
