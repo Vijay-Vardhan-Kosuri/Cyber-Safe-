@@ -588,3 +588,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #99: Implement accessibility keyboard shortcuts dialog for fast assessment navigation
+- **Branch:** `ui/keyboard-shortcuts-modal`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
