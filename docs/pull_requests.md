@@ -546,3 +546,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #92: Build modal form to generate time-limited invitation links
+- **Branch:** `ui/invite-colleague-modal-dialog`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
