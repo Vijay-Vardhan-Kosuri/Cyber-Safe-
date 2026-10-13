@@ -642,3 +642,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #108: Display optional onboarding QR code for mobile workforce account setup
+- **Branch:** `ui/invitation-qr-code-modal`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
