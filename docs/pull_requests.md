@@ -462,3 +462,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #78: Implement progress bars and 'Continue Assessment' buttons for members
+- **Branch:** `ui/employee-assigned-checklists-card`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
