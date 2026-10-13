@@ -48,3 +48,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #9: Create SecurityPolicy model with mandatory governance flags
+- **Branch:** `feat/security-policy-management`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
