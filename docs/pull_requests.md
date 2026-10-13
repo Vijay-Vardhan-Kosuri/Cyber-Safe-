@@ -600,3 +600,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #101: Develop interactive drag-and-drop Kanban board for remediation task workflow
+- **Branch:** `ui/remediation-kanban-board`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
