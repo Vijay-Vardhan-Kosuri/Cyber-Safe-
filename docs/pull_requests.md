@@ -252,3 +252,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #43: Author automated test suites covering RBAC, tenant isolation, and scoring
+- **Branch:** `feat/comprehensive-test-suite`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
