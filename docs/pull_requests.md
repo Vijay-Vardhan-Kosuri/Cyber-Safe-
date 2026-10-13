@@ -426,3 +426,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #72: Add open tasks, overdue tasks, and active member counter cards
+- **Branch:** `ui/orgadmin-posture-kpi-cards`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
