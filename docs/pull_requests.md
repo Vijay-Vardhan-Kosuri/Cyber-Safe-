@@ -504,3 +504,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #85: Build assessment results view with prominent posture score display
+- **Branch:** `ui/assessment-detail-score-gauge`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
