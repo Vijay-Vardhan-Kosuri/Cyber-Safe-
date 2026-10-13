@@ -384,3 +384,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #65: Build sticky topbar with brand, role badge, notification bell, and profile
+- **Branch:** `ui/shared-base-navigation-bar`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
