@@ -60,3 +60,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #11: Implement ChecklistTemplate model supporting global and custom baselines
+- **Branch:** `feat/checklist-template-versioning`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
