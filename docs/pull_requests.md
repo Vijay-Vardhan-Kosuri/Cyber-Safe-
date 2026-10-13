@@ -540,3 +540,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #91: Create member directory table with role chips and suspension toggles
+- **Branch:** `ui/team-members-governance-table`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
