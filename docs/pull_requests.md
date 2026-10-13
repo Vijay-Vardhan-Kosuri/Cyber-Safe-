@@ -210,3 +210,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #36: Create Zero-Trust access verification gates and device telemetry checks
+- **Branch:** `feat/zero-trust-posture-orchestrator`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
