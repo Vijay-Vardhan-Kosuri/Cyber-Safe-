@@ -468,3 +468,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #79: Add approaching and overdue remediation task countdown indicators
+- **Branch:** `ui/employee-task-deadline-alerts`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
