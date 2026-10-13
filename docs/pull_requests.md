@@ -186,3 +186,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #32: Create executive compliance report download endpoint
+- **Branch:** `feat/org-compliance-csv-exporter`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
