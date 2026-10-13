@@ -654,3 +654,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #110: Verify SHA-256 content hashes of uploaded remediation artifacts in client UI
+- **Branch:** `ui/evidence-checksum-verifier`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
