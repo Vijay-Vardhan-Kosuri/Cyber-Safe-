@@ -240,3 +240,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #41: Build multi-cloud CIS benchmark evaluation workers
+- **Branch:** `feat/cloud-security-posture-manager`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
