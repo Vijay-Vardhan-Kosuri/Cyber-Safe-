@@ -216,3 +216,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #37: Implement privileged access review and entitlement drift evaluators
+- **Branch:** `feat/identity-governance-evaluator`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
