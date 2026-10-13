@@ -408,3 +408,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #69: Implement registered organizations table with status badges and actions
+- **Branch:** `ui/superadmin-organizations-roster`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
