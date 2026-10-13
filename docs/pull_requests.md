@@ -516,3 +516,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Alex Rivera
 
+### PR #87: Create task board with All, Open, In Progress, Review, and Verified tabs
+- **Branch:** `ui/remediation-task-board-tabs`
+- **Author:** Maya Lin (Frontend/UX)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Alex Rivera
+
