@@ -222,3 +222,9 @@
 - **Status:** Merged into `main`
 - **Peer Review:** Approved by Maya Lin
 
+### PR #38: Add vulnerability decay calculations based on CVSS scores and exposure hours
+- **Branch:** `feat/vulnerability-sliding-window`
+- **Author:** Alex Rivera (Backend/Security)
+- **Status:** Merged into `main`
+- **Peer Review:** Approved by Maya Lin
+
