@@ -62,3 +62,4 @@
 
 ## Notes
 This developer owns the complete end-user facing UI layer for Analyst, Employee, and Framework/Assessment workflows, plus all advanced visualization components (radar, heatmap, sparklines, Kanban), modals, and export/print experiences. The remaining LOC includes all template/HTML/CSS/JS assets and any residual engine support code.
+ 
