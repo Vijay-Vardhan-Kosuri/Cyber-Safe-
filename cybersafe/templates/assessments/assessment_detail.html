@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+
+{% block title %}Assessment Results: {{ assessment.title }} — CyberSafe{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-lg-4 py-4">
+  <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+    <div>
+      <a href="{% url 'assessments:assessment_list' %}" class="text-muted-cs small text-decoration-none mb-1 d-inline-block">
+        <i class="bi bi-arrow-left me-1"></i> Back to Assessments
+      </a>
+      <h2 class="h3 fw-bold text-white mb-0">{{ assessment.title }}</h2>
+      <p class="text-muted-cs small mb-0">{{ assessment.organization.name }} &bull; Assessed by {{ assessment.assigned_to.full_name }}</p>
+    </div>
+    <div class="d-flex gap-2">
+      <a href="{% url 'analytics:export_assessment_csv' assessment.id %}" class="btn btn-cyber-outline btn-sm">
+        <i class="bi bi-file-earmark-spreadsheet me-1 text-cyan"></i> Export CSV Report
+      </a>
+      {% if assessment.status == 'SUBMITTED' and request.user_role in 'SUPER_ADMIN,ORG_ADMIN,SECURITY_ANALYST' %}
+        <button type="button" class="btn btn-cyber-cyan btn-sm" data-bs-toggle="modal" data-bs-target="#completeReviewModal">
+          <i class="bi bi-check-circle-fill me-1"></i> Finalize Analyst Review
+        </button>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Score Summary Row -->
+  <div class="row g-4 mb-4">
+    <div class="col-lg-4">
+      <div class="cs-card h-100 p-4 text-center d-flex flex-column justify-content-center">
+        <div class="kpi-label mb-2">Overall Compliance Posture Score</div>
+        <div class="display-3 fw-bold {% if assessment.score >= 85 %}text-success{% elif assessment.score >= 60 %}text-warning{% else %}text-danger{% endif %} mb-2">
+          {{ assessment.score }}%
+        </div>
+        <div>
+          {% if assessment.risk_level == 'LOW' %}
+            <span class="badge bg-success-subtle text-success border border-success px-3 py-2">Low Risk / Well-Maintained</span>
+          {% elif assessment.risk_level == 'MODERATE' %}
+            <span class="badge bg-warning-subtle text-warning border border-warning px-3 py-2">Moderate Attention Required</span>
+          {% else %}
+            <span class="badge bg-danger-subtle text-danger border border-danger px-3 py-2">High Priority Deficiencies</span>
+          {% endif %}
+        </div>
+        <div class="mt-4 pt-3 border-top border-secondary text-muted-cs small">
+          {{ score_data.disclaimer }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Category Breakdown Bars -->
+    <div class="col-lg-8">
+      <div class="cs-card h-100 p-4">
+        <h5 class="text-white mb-3"><i class="bi bi-bar-chart-fill text-cyan me-2"></i> Category Compliance Breakdown</h5>
+        <div class="row g-3">
+          {% for cat in category_breakdown %}
+            <div class="col-md-6">
+              <div class="p-3 rounded bg-dark border border-secondary">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <strong class="text-white small">{{ cat.name }}</strong>
+                  <span class="fw-bold {% if cat.score >= 85 %}text-success{% elif cat.score >= 60 %}text-warning{% else %}text-danger{% endif %}">
+                    {{ cat.score }}%
+                  </span>
+                </div>
+                <div class="progress bg-black border border-secondary mb-2" style="height: 6px;">
+                  <div class="progress-bar {% if cat.score >= 85 %}bg-success{% elif cat.score >= 60 %}bg-warning{% else %}bg-danger{% endif %}" style="width: {{ cat.score }}%;"></div>
+                </div>
+                <div class="d-flex justify-content-between small text-muted-cs">
+                  <span>{{ cat.compliant_items }} Compliant</span>
+                  <span class="{% if cat.needs_improvement_items > 0 %}text-danger fw-bold{% endif %}">{{ cat.needs_improvement_items }} Gaps</span>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Identified Deficiencies / Findings Needing Remediation -->
+  <div class="cs-card mb-4">
+    <div class="cs-card-header">
+      <h5 class="mb-0 text-white"><i class="bi bi-exclamation-triangle-fill text-danger me-2"></i> Identified Gaps & Remediation Actions ({{ findings.count }})</h5>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-cyber mb-0 align-middle">
+        <thead>
+          <tr>
+            <th>Control</th>
+            <th>Category</th>
+            <th>Priority</th>
+            <th>Actionable Remediation Guidance</th>
+            <th>Assessor Remarks</th>
+            <th>Remediation</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for f in findings %}
+            <tr>
+              <td>
+                <code>{{ f.item.control_code }}</code>
+                <strong class="text-white d-block small mt-1">{{ f.item.title }}</strong>
+              </td>
+              <td class="text-muted-cs small">{{ f.item.category.name }}</td>
+              <td><span class="badge badge-priority-{{ f.item.priority|lower }}">{{ f.item.priority }}</span></td>
+              <td class="text-cyan small" style="max-width: 320px;">{{ f.item.guidance }}</td>
+              <td class="text-muted-cs small">{{ f.notes|default:"None provided" }}</td>
+              <td>
+                <form method="post" action="{% url 'remediation:create_from_finding' f.id %}">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-sm btn-cyber-cyan py-1 px-2">
+                    <i class="bi bi-tools me-1"></i> Create Task
+                  </button>
+                </form>
+              </td>
+            </tr>
+          {% empty %}
+            <tr><td colspan="6" class="text-center text-success py-4"><i class="bi bi-check-circle-fill me-1"></i> Zero gaps identified! Outstanding posture.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Finalize Review -->
+<div class="modal fade modal-cyber" id="completeReviewModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form method="post" action="{% url 'assessments:assessment_review' assessment.id %}">
+        {% csrf_token %}
+        <div class="modal-header">
+          <h5 class="modal-title text-white">Finalize Security Analyst Review</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <p class="text-muted-cs small mb-3">This action will transition the assessment status to <strong>Completed</strong> and calculate official risk metrics for leadership reporting.</p>
+          <div class="mb-3">
+            <label class="form-label text-white">Reviewer Feedback & Audit Remarks</label>
+            <textarea name="reviewer_feedback" class="form-control form-control-dark" rows="4" placeholder="Enter findings summary, risk observations, or sign-off remarks..."></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-cyber-outline" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-cyber-cyan">Sign-off & Finalize</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Notifications — CyberSafe{% endblock %}
+
+{% block content %}
+<div class="container py-4" style="max-width: 760px;">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h3 class="text-white fw-bold mb-0"><i class="bi bi-bell-fill text-cyan me-2"></i> Notification Center</h3>
+    <form method="post" action="{% url 'notifications:mark_all_read' %}">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-sm btn-cyber-outline">Mark All as Read</button>
+    </form>
+  </div>
+
+  <div class="cs-card">
+    <div class="list-group list-group-flush bg-transparent">
+      {% for n in notifications %}
+        <div class="list-group-item bg-transparent border-secondary text-white p-3 {% if not n.is_read %}border-start border-3 border-info{% endif %}">
+          <div class="d-flex justify-content-between align-items-center mb-1">
+            <span class="badge bg-dark border border-secondary text-cyan small">{{ n.get_category_display }}</span>
+            <small class="text-muted-cs">{{ n.created_at|date:"M d, Y H:i" }}</small>
+          </div>
+          <h6 class="text-white mb-1">{{ n.title }}</h6>
+          <p class="text-muted-cs small mb-2">{{ n.message }}</p>
+          {% if n.link_url %}
+            <form method="post" action="{% url 'notifications:mark_read' n.id %}">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-sm btn-cyber-cyan py-0 px-2 small">View Details &rarr;</button>
+            </form>
+          {% endif %}
+        </div>
+      {% empty %}
+        <div class="p-5 text-center text-muted-cs">No notifications at this time.</div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

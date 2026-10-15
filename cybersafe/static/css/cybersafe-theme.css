@@ -1,0 +1,457 @@
+/* ==========================================================================
+   CyberSafe — Conference Aesthetic Theme (Inspired by SharkFest Europe)
+   Palette: Deep Midnight Navy, Oceanic Blue, Electric Cyan, Crisp White
+   ========================================================================== */
+
+:root {
+  --cs-navy-deep: #050b14;
+  --cs-navy-dark: #081220;
+  --cs-navy-card: #0c1a2e;
+  --cs-navy-elevated: #11223b;
+  --cs-navy-border: #182e4b;
+  --cs-navy-border-hover: #234672;
+
+  --cs-blue-ocean: #0066cc;
+  --cs-blue-vivid: #0080ff;
+  --cs-blue-glow: rgba(0, 102, 204, 0.35);
+
+  --cs-cyan-accent: #00f0ff;
+  --cs-cyan-secondary: #38bdf8;
+  --cs-cyan-glow: rgba(0, 240, 255, 0.25);
+
+  --cs-white: #f8fafc;
+  --cs-text-main: #f1f5f9;
+  --cs-text-muted: #8da4be;
+  --cs-text-dim: #5c7490;
+
+  --cs-emerald: #10b981;
+  --cs-amber: #f59e0b;
+  --cs-rose: #f43f5e;
+  --cs-purple: #a855f7;
+
+  --cs-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --cs-font-mono: 'JetBrains Mono', 'Fira Code', Menlo, Consolas, monospace;
+}
+
+body {
+  background-color: var(--cs-navy-deep);
+  color: var(--cs-text-main);
+  font-family: var(--cs-font-sans);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(0, 102, 204, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 85% 65%, rgba(0, 240, 255, 0.08) 0%, transparent 40%),
+    linear-gradient(rgba(24, 46, 75, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(24, 46, 75, 0.12) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--cs-white);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.text-cyan {
+  color: var(--cs-cyan-accent) !important;
+}
+
+.text-ocean {
+  color: var(--cs-blue-vivid) !important;
+}
+
+.text-muted-cs {
+  color: var(--cs-text-muted) !important;
+}
+
+/* Header & Navbar */
+.navbar-cybersafe {
+  background-color: rgba(8, 18, 32, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--cs-navy-border);
+  padding: 0.85rem 1.5rem;
+  z-index: 1030;
+}
+
+.navbar-brand-cs {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--cs-white) !important;
+  text-decoration: none;
+  letter-spacing: -0.03em;
+}
+
+.brand-fin-icon {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, var(--cs-blue-ocean) 0%, var(--cs-cyan-accent) 100%);
+  clip-path: polygon(0% 100%, 100% 100%, 100% 10%, 25% 0%);
+  border-radius: 4px;
+  display: inline-block;
+  box-shadow: 0 0 14px var(--cs-cyan-glow);
+}
+
+.brand-badge {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  background: rgba(0, 240, 255, 0.15);
+  color: var(--cs-cyan-accent);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+}
+
+/* Cards & Containers */
+.cs-card {
+  background-color: var(--cs-navy-card);
+  border: 1px solid var(--cs-navy-border);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+}
+
+.cs-card:hover {
+  border-color: var(--cs-navy-border-hover);
+}
+
+.cs-card-header {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--cs-navy-border);
+  background-color: rgba(17, 34, 59, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cs-card-body {
+  padding: 1.5rem;
+}
+
+/* Shark-Fin Tech Accent Card */
+.cs-fin-card {
+  position: relative;
+}
+
+.cs-fin-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, transparent 50%, rgba(0, 240, 255, 0.15) 50%);
+  border-top-right-radius: 12px;
+  pointer-events: none;
+}
+
+/* KPI Cards */
+.cs-kpi-card {
+  background-color: var(--cs-navy-card);
+  border: 1px solid var(--cs-navy-border);
+  border-radius: 12px;
+  padding: 1.35rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.cs-kpi-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--cs-blue-ocean), var(--cs-cyan-accent));
+}
+
+.kpi-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--cs-text-muted);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.kpi-value {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--cs-white);
+  line-height: 1;
+}
+
+/* High-Contrast Conference Buttons */
+.btn-cyber-primary {
+  background: linear-gradient(135deg, var(--cs-blue-ocean) 0%, #0052a3 100%);
+  color: var(--cs-white);
+  border: 1px solid #0077e6;
+  font-weight: 600;
+  padding: 0.65rem 1.4rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px var(--cs-blue-glow);
+}
+
+.btn-cyber-primary:hover {
+  background: linear-gradient(135deg, #0077e6 0%, var(--cs-blue-ocean) 100%);
+  color: var(--cs-white);
+  box-shadow: 0 6px 20px rgba(0, 102, 204, 0.55);
+  transform: translateY(-1px);
+}
+
+.btn-cyber-cyan {
+  background: var(--cs-cyan-accent);
+  color: var(--cs-navy-deep);
+  border: none;
+  font-weight: 700;
+  padding: 0.65rem 1.4rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px var(--cs-cyan-glow);
+}
+
+.btn-cyber-cyan:hover {
+  background: #33f3ff;
+  color: var(--cs-navy-deep);
+  box-shadow: 0 6px 22px rgba(0, 240, 255, 0.45);
+  transform: translateY(-1px);
+}
+
+.btn-cyber-outline {
+  background: transparent;
+  color: var(--cs-white);
+  border: 1px solid var(--cs-navy-border);
+  font-weight: 600;
+  padding: 0.65rem 1.4rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.btn-cyber-outline:hover {
+  border-color: var(--cs-cyan-accent);
+  color: var(--cs-cyan-accent);
+  background: rgba(0, 240, 255, 0.05);
+}
+
+/* Forms & Inputs */
+.form-control-dark, .form-select-dark {
+  background-color: var(--cs-navy-dark) !important;
+  border: 1px solid var(--cs-navy-border) !important;
+  color: var(--cs-white) !important;
+  border-radius: 8px;
+  padding: 0.65rem 1rem;
+}
+
+.form-control-dark:focus, .form-select-dark:focus {
+  border-color: var(--cs-cyan-accent) !important;
+  box-shadow: 0 0 0 3px var(--cs-cyan-glow) !important;
+  background-color: #0b182b !important;
+  color: var(--cs-white) !important;
+}
+
+.form-control-dark::placeholder {
+  color: var(--cs-text-dim);
+}
+
+/* Tables */
+.table-cyber {
+  color: var(--cs-text-main);
+  margin-bottom: 0;
+}
+
+.table-cyber thead th {
+  background-color: rgba(17, 34, 59, 0.6);
+  color: var(--cs-text-muted);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  border-bottom: 1px solid var(--cs-navy-border);
+  padding: 0.9rem 1.25rem;
+}
+
+.table-cyber tbody td {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--cs-navy-border);
+  vertical-align: middle;
+}
+
+.table-cyber tbody tr:hover {
+  background-color: rgba(0, 102, 204, 0.06);
+}
+
+/* Badges & Status Indicators */
+.badge-role {
+  padding: 0.35rem 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 6px;
+  letter-spacing: 0.04em;
+}
+
+.badge-role-superadmin {
+  background: rgba(168, 85, 247, 0.2);
+  color: #c084fc;
+  border: 1px solid rgba(168, 85, 247, 0.4);
+}
+
+.badge-role-orgadmin {
+  background: rgba(0, 102, 204, 0.2);
+  color: #60a5fa;
+  border: 1px solid rgba(0, 102, 204, 0.4);
+}
+
+.badge-role-analyst {
+  background: rgba(0, 240, 255, 0.15);
+  color: var(--cs-cyan-accent);
+  border: 1px solid rgba(0, 240, 255, 0.35);
+}
+
+.badge-role-employee {
+  background: rgba(141, 164, 190, 0.15);
+  color: #cbd5e1;
+  border: 1px solid rgba(141, 164, 190, 0.3);
+}
+
+/* Status Chips */
+.badge-compliant {
+  background: rgba(16, 185, 129, 0.18);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+}
+
+.badge-needs-improvement {
+  background: rgba(244, 63, 94, 0.18);
+  color: #fb7185;
+  border: 1px solid rgba(244, 63, 94, 0.4);
+}
+
+.badge-na {
+  background: rgba(100, 116, 139, 0.2);
+  color: #94a3b8;
+  border: 1px solid rgba(100, 116, 139, 0.35);
+}
+
+.badge-priority-critical {
+  background: rgba(244, 63, 94, 0.25);
+  color: #ff4d6d;
+  border: 1px solid #f43f5e;
+  font-weight: 700;
+}
+
+.badge-priority-high {
+  background: rgba(245, 158, 11, 0.2);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.4);
+}
+
+.badge-priority-medium {
+  background: rgba(56, 189, 248, 0.2);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.4);
+}
+
+.badge-priority-low {
+  background: rgba(148, 163, 184, 0.15);
+  color: #cbd5e1;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+}
+
+/* Remediation States */
+.badge-task-open {
+  background: rgba(59, 130, 246, 0.2);
+  color: #93c5fd;
+  border: 1px solid rgba(59, 130, 246, 0.4);
+}
+
+.badge-task-progress {
+  background: rgba(245, 158, 11, 0.2);
+  color: #fde047;
+  border: 1px solid rgba(245, 158, 11, 0.4);
+}
+
+.badge-task-review {
+  background: rgba(168, 85, 247, 0.2);
+  color: #d8b4fe;
+  border: 1px solid rgba(168, 85, 247, 0.4);
+}
+
+.badge-task-verified {
+  background: rgba(16, 185, 129, 0.2);
+  color: #6ee7b7;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+}
+
+/* Notice Box / Posture Disclaimer */
+.cs-disclaimer-box {
+  background: rgba(8, 18, 32, 0.85);
+  border-left: 4px solid var(--cs-cyan-accent);
+  border-top: 1px solid var(--cs-navy-border);
+  border-right: 1px solid var(--cs-navy-border);
+  border-bottom: 1px solid var(--cs-navy-border);
+  border-radius: 6px;
+  padding: 1rem 1.25rem;
+  font-size: 0.88rem;
+  color: var(--cs-text-muted);
+}
+
+/* Conference Hero */
+.hero-conference {
+  padding: 5rem 0 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-headline {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.03em;
+}
+
+@media (max-width: 768px) {
+  .hero-headline {
+    font-size: 2.25rem;
+  }
+}
+
+.hero-gradient-text {
+  background: linear-gradient(135deg, #ffffff 30%, var(--cs-cyan-accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Modals */
+.modal-cyber .modal-content {
+  background-color: var(--cs-navy-card);
+  border: 1px solid var(--cs-navy-border-hover);
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+}
+
+.modal-cyber .modal-header {
+  border-bottom: 1px solid var(--cs-navy-border);
+  background-color: rgba(17, 34, 59, 0.5);
+}
+
+.modal-cyber .modal-footer {
+  border-top: 1px solid var(--cs-navy-border);
+}
+
+/* Footer */
+.footer-cyber {
+  background-color: var(--cs-navy-dark);
+  border-top: 1px solid var(--cs-navy-border);
+  padding: 2.5rem 0 2rem;
+  margin-top: auto;
+  font-size: 0.875rem;
+  color: var(--cs-text-muted);
+}
