@@ -7,36 +7,72 @@ document.addEventListener('DOMContentLoaded', () => {
     const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
     tooltipTriggerList.map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
 
-    // 2. Assessment Wizard Progress Tracker
+    // 2. Assessment Wizard Progress Tracker & Green Selected State
     const wizardForm = document.getElementById('assessment-wizard-form');
     if (wizardForm) {
         const totalRadios = wizardForm.querySelectorAll('.response-radio');
         const progressBar = document.getElementById('wizard-progress-bar');
         const progressCount = document.getElementById('wizard-progress-count');
 
-        function updateProgress() {
+        function updateProgressAndStyles() {
             const answeredItems = new Set();
+            const uniqueQuestions = new Set();
+
             totalRadios.forEach(r => {
-                if (r.checked && r.value !== 'NOT_ASSESSED') {
-                    answeredItems.add(r.name);
+                uniqueQuestions.add(r.name);
+                const label = r.closest('.response-option');
+                if (r.checked) {
+                    if (label) {
+                        label.classList.add('is-selected', 'active-green');
+                    }
+                    if (r.value !== 'NOT_ASSESSED') {
+                        answeredItems.add(r.name);
+                    }
+                } else {
+                    if (label) {
+                        label.classList.remove('is-selected', 'active-green');
+                    }
                 }
             });
 
-            const uniqueQuestions = new Set(Array.from(totalRadios).map(r => r.name)).size;
             const completed = answeredItems.size;
-            const pct = uniqueQuestions > 0 ? Math.round((completed / uniqueQuestions) * 100) : 0;
+            const total = uniqueQuestions.size;
+            const pct = total > 0 ? Math.round((completed / total) * 100) : 0;
 
             if (progressBar) {
                 progressBar.style.width = pct + '%';
                 progressBar.setAttribute('aria-valuenow', pct);
             }
             if (progressCount) {
-                progressCount.textContent = `${completed} / ${uniqueQuestions} (${pct}%)`;
+                progressCount.textContent = pct + '%';
             }
         }
 
-        totalRadios.forEach(r => r.addEventListener('change', updateProgress));
-        updateProgress();
+        // Option card click handling
+        document.querySelectorAll('.response-option').forEach(label => {
+            label.addEventListener('click', function () {
+                const radio = this.querySelector('input[type="radio"]');
+                if (radio) {
+                    const group = this.closest('.response-radio-group') || this.closest('.row');
+                    if (group) {
+                        group.querySelectorAll('.response-option').forEach(opt => {
+                            opt.classList.remove('is-selected', 'active-green');
+                            const otherRadio = opt.querySelector('input[type="radio"]');
+                            if (otherRadio && otherRadio !== radio) {
+                                otherRadio.checked = false;
+                            }
+                        });
+                    }
+                    radio.checked = true;
+                    this.classList.add('is-selected', 'active-green');
+                    radio.dispatchEvent(new Event('change', { bubbles: true }));
+                    updateProgressAndStyles();
+                }
+            });
+        });
+
+        totalRadios.forEach(r => r.addEventListener('change', updateProgressAndStyles));
+        updateProgressAndStyles();
     }
 
     // 3. Auto-dismiss Alert Messages after 5 seconds

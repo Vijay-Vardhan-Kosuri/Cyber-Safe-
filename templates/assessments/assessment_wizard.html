@@ -2,6 +2,65 @@
 
 {% block title %}Answering: {{ assessment.title }} — CyberSafe{% endblock %}
 
+{% block extra_css %}
+<style>
+/* ==========================================================================
+   Assessment Wizard Radio Option Cards & Green Selection State
+   ========================================================================== */
+.response-option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(12, 26, 46, 0.75);
+  border: 1px solid var(--cs-navy-border, #182e4b);
+  border-radius: 8px;
+  color: #94a3b8;
+  padding: 0.65rem 0.5rem;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  text-align: center;
+}
+
+.response-option:hover {
+  background-color: rgba(17, 34, 59, 0.95);
+  border-color: var(--cs-cyan-secondary, #38bdf8);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* Green Color Marking when clicked or checked */
+.response-option.is-selected,
+.response-option.active-green,
+.response-option:has(input[type="radio"]:checked) {
+  background-color: rgba(16, 185, 129, 0.22) !important;
+  border: 2px solid #10b981 !important;
+  color: #10b981 !important;
+  box-shadow: 0 0 14px rgba(16, 185, 129, 0.45) !important;
+  font-weight: 700 !important;
+  transform: translateY(-1px);
+}
+
+.response-option.is-selected i,
+.response-option.active-green i,
+.response-option:has(input[type="radio"]:checked) i {
+  color: #10b981 !important;
+  text-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+}
+
+.response-option.is-selected::after,
+.response-option:has(input[type="radio"]:checked)::after {
+  content: " \2714";
+  font-size: 0.85rem;
+  margin-left: 0.35rem;
+  color: #10b981;
+}
+</style>
+{% endblock %}
+
 {% block content %}
 <div class="container-fluid px-lg-4 py-4">
   <!-- Wizard Header Bar -->
@@ -62,27 +121,27 @@
                 </div>
 
                 <!-- Response Radio Options -->
-                <div class="row g-2 mb-3">
+                <div class="row g-2 mb-3 response-radio-group">
                   <div class="col-6 col-md-3">
-                    <label class="w-100 p-2 rounded border border-secondary text-center cursor-pointer {% if resp.response == 'COMPLIANT' %}bg-success-subtle text-success border-success{% endif %}">
+                    <label class="response-option w-100 {% if resp.response == 'COMPLIANT' %}is-selected active-green{% endif %}">
                       <input type="radio" class="response-radio d-none" name="resp_{{ resp.id }}" value="COMPLIANT" {% if resp.response == 'COMPLIANT' %}checked{% endif %}>
                       <i class="bi bi-check-circle-fill me-1"></i> Compliant
                     </label>
                   </div>
                   <div class="col-6 col-md-3">
-                    <label class="w-100 p-2 rounded border border-secondary text-center cursor-pointer {% if resp.response == 'NEEDS_IMPROVEMENT' %}bg-danger-subtle text-danger border-danger{% endif %}">
+                    <label class="response-option w-100 {% if resp.response == 'NEEDS_IMPROVEMENT' %}is-selected active-green{% endif %}">
                       <input type="radio" class="response-radio d-none" name="resp_{{ resp.id }}" value="NEEDS_IMPROVEMENT" {% if resp.response == 'NEEDS_IMPROVEMENT' %}checked{% endif %}>
                       <i class="bi bi-x-circle-fill me-1"></i> Needs Improvement
                     </label>
                   </div>
                   <div class="col-6 col-md-3">
-                    <label class="w-100 p-2 rounded border border-secondary text-center cursor-pointer {% if resp.response == 'NOT_APPLICABLE' %}bg-secondary-subtle text-white{% endif %}">
+                    <label class="response-option w-100 {% if resp.response == 'NOT_APPLICABLE' %}is-selected active-green{% endif %}">
                       <input type="radio" class="response-radio d-none" name="resp_{{ resp.id }}" value="NOT_APPLICABLE" {% if resp.response == 'NOT_APPLICABLE' %}checked{% endif %}>
                       <i class="bi bi-slash-circle me-1"></i> Not Applicable
                     </label>
                   </div>
                   <div class="col-6 col-md-3">
-                    <label class="w-100 p-2 rounded border border-secondary text-center cursor-pointer {% if resp.response == 'NOT_ASSESSED' %}border-warning text-warning{% endif %}">
+                    <label class="response-option w-100 {% if resp.response == 'NOT_ASSESSED' %}is-selected active-green{% endif %}">
                       <input type="radio" class="response-radio d-none" name="resp_{{ resp.id }}" value="NOT_ASSESSED" {% if resp.response == 'NOT_ASSESSED' %}checked{% endif %}>
                       <i class="bi bi-question-circle me-1"></i> Not Assessed
                     </label>
@@ -115,4 +174,82 @@
     </div>
   </form>
 </div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  function updateProgressAndStyles() {
+    const wizardForm = document.getElementById('assessment-wizard-form');
+    if (!wizardForm) return;
+
+    const totalRadios = wizardForm.querySelectorAll('.response-radio');
+    const progressBar = document.getElementById('wizard-progress-bar');
+    const progressCount = document.getElementById('wizard-progress-count');
+
+    const answeredItems = new Set();
+    const uniqueQuestions = new Set();
+
+    totalRadios.forEach(function (r) {
+      uniqueQuestions.add(r.name);
+      const label = r.closest('.response-option');
+      if (r.checked) {
+        if (label) {
+          label.classList.add('is-selected', 'active-green');
+        }
+        if (r.value !== 'NOT_ASSESSED') {
+          answeredItems.add(r.name);
+        }
+      } else {
+        if (label) {
+          label.classList.remove('is-selected', 'active-green');
+        }
+      }
+    });
+
+    const total = uniqueQuestions.size;
+    const completed = answeredItems.size;
+    const pct = total > 0 ? Math.round((completed / total) * 100) : 0;
+
+    if (progressBar) {
+      progressBar.style.width = pct + '%';
+      progressBar.setAttribute('aria-valuenow', pct);
+    }
+    if (progressCount) {
+      progressCount.textContent = pct + '%';
+    }
+  }
+
+  // Handle click on option labels
+  document.querySelectorAll('.response-option').forEach(function (label) {
+    label.addEventListener('click', function (e) {
+      const radio = this.querySelector('input[type="radio"]');
+      if (radio) {
+        const group = this.closest('.response-radio-group') || this.closest('.row');
+        if (group) {
+          group.querySelectorAll('.response-option').forEach(function (opt) {
+            opt.classList.remove('is-selected', 'active-green');
+            const otherRadio = opt.querySelector('input[type="radio"]');
+            if (otherRadio && otherRadio !== radio) {
+              otherRadio.checked = false;
+            }
+          });
+        }
+        radio.checked = true;
+        this.classList.add('is-selected', 'active-green');
+        radio.dispatchEvent(new Event('change', { bubbles: true }));
+        updateProgressAndStyles();
+      }
+    });
+  });
+
+  // Handle radio change event
+  document.querySelectorAll('.response-radio').forEach(function (radio) {
+    radio.addEventListener('change', updateProgressAndStyles);
+  });
+
+  // Initial sync on page load
+  updateProgressAndStyles();
+});
+</script>
 {% endblock %}

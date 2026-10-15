@@ -455,3 +455,59 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.875rem;
   color: var(--cs-text-muted);
 }
+
+
+/* ==========================================================================
+   Assessment Wizard Radio Option Cards & Green Selection State
+   ========================================================================== */
+.response-option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(12, 26, 46, 0.75);
+  border: 1px solid var(--cs-navy-border, #182e4b);
+  border-radius: 8px;
+  color: #94a3b8;
+  padding: 0.65rem 0.5rem;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  text-align: center;
+}
+
+.response-option:hover {
+  background-color: rgba(17, 34, 59, 0.95);
+  border-color: var(--cs-cyan-secondary, #38bdf8);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* Green Color Selection when clicked or checked */
+.response-option.is-selected,
+.response-option.active-green,
+.response-option:has(input[type="radio"]:checked) {
+  background-color: rgba(16, 185, 129, 0.22) !important;
+  border: 2px solid #10b981 !important;
+  color: #10b981 !important;
+  box-shadow: 0 0 14px rgba(16, 185, 129, 0.45) !important;
+  font-weight: 700 !important;
+  transform: translateY(-1px);
+}
+
+.response-option.is-selected i,
+.response-option.active-green i,
+.response-option:has(input[type="radio"]:checked) i {
+  color: #10b981 !important;
+  text-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+}
+
+.response-option.is-selected::after,
+.response-option:has(input[type="radio"]:checked)::after {
+  content: " \2714";
+  font-size: 0.85rem;
+  margin-left: 0.35rem;
+  color: #10b981;
+}
