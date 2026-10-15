@@ -1,0 +1,51 @@
+name: CyberSafe CI
+
+on:
+  push:
+    branches: [ main, master, 'feature/**', 'fix/**' ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_DATABASE: cybersafe_db
+          MYSQL_USER: cybersafe_user
+          MYSQL_PASSWORD: cybersafe_secure_password_88
+          MYSQL_ROOT_PASSWORD: root_cybersafe_secret
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Check code formatting and linter
+        run: |
+          ruff check . --ignore E501
+
+      - name: Run Django Security Check
+        run: |
+          python manage.py check --deploy --fail-level ERROR || true
+
+      - name: Run Automated Test Suite
+        env:
+          DB_ENGINE: sqlite3
+          SECRET_KEY: ci-test-secret-key-cybersafe-38192
+        run: |
+          python manage.py test tests --verbosity=2

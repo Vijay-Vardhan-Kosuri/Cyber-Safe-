@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+
+{% block title %}Super Admin Control Center — CyberSafe{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-lg-4 py-4">
+  <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+    <div>
+      <div class="badge badge-role badge-role-superadmin mb-1"><i class="bi bi-shield-shaded me-1"></i> Platform Super Admin</div>
+      <h2 class="h3 fw-bold text-white mb-0">Global Platform Administration</h2>
+      <p class="text-muted-cs small mb-0">Cross-tenant oversight, global checklist templates, and operational audit events.</p>
+    </div>
+    <div class="d-flex gap-2">
+      <a href="{% url 'checklists:template_create' %}" class="btn btn-cyber-cyan btn-sm">
+        <i class="bi bi-plus-lg me-1"></i> New Global Framework
+      </a>
+      <a href="{% url 'audit:audit_log' %}" class="btn btn-cyber-outline btn-sm">
+        <i class="bi bi-list-check me-1"></i> Full Platform Audit
+      </a>
+    </div>
+  </div>
+
+  <!-- KPI Row -->
+  <div class="row g-3 mb-4">
+    <div class="col-6 col-md-3">
+      <div class="cs-kpi-card">
+        <div class="kpi-label">Total Organizations</div>
+        <div class="kpi-value text-cyan">{{ total_orgs }}</div>
+        <small class="text-muted-cs">Active: {{ active_orgs }}</small>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="cs-kpi-card">
+        <div class="kpi-label">Registered Users</div>
+        <div class="kpi-value text-white">{{ total_users }}</div>
+        <small class="text-muted-cs">Across all workspaces</small>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="cs-kpi-card">
+        <div class="kpi-label">Assessments Run</div>
+        <div class="kpi-value text-cyan">{{ total_assessments }}</div>
+        <small class="text-muted-cs">Total evaluations logged</small>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="cs-kpi-card">
+        <div class="kpi-label">Global Frameworks</div>
+        <div class="kpi-value text-white">{{ templates.count }}</div>
+        <small class="text-muted-cs">Published baselines</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-4 mb-4">
+    <!-- Organizations Roster -->
+    <div class="col-lg-8">
+      <div class="cs-card">
+        <div class="cs-card-header">
+          <h5 class="mb-0 text-white"><i class="bi bi-buildings-fill text-cyan me-2"></i> Registered Organizations</h5>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-cyber align-middle mb-0">
+            <thead>
+              <tr>
+                <th>Organization Name</th>
+                <th>Domain</th>
+                <th>Industry</th>
+                <th>Active Members</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for org in organizations %}
+                <tr>
+                  <td class="fw-bold text-white">{{ org.name }}</td>
+                  <td><code>{{ org.domain|default:"-" }}</code></td>
+                  <td class="text-muted-cs small">{{ org.industry }}</td>
+                  <td><span class="badge bg-dark border border-secondary text-cyan">{{ org.active_members_count }}</span></td>
+                  <td>
+                    {% if org.is_active %}
+                      <span class="badge bg-success-subtle text-success border border-success">Active</span>
+                    {% else %}
+                      <span class="badge bg-danger-subtle text-danger border border-danger">Suspended</span>
+                    {% endif %}
+                  </td>
+                </tr>
+              {% empty %}
+                <tr><td colspan="5" class="text-center text-muted-cs py-4">No organizations registered yet.</td></tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Global Templates -->
+    <div class="col-lg-4">
+      <div class="cs-card">
+        <div class="cs-card-header">
+          <h5 class="mb-0 text-white"><i class="bi bi-journal-bookmark-fill text-cyan me-2"></i> Global Frameworks</h5>
+        </div>
+        <div class="cs-card-body p-0">
+          <div class="list-group list-group-flush bg-transparent">
+            {% for t in templates %}
+              <a href="{% url 'checklists:template_detail' t.id %}" class="list-group-item list-group-item-action bg-transparent border-secondary text-white py-3">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <strong class="text-cyan">{{ t.title }}</strong>
+                  <span class="badge bg-dark border border-secondary text-white">v{{ t.version }}</span>
+                </div>
+                <p class="text-muted-cs small mb-1">{{ t.description|truncatewords:12 }}</p>
+                <small class="text-dim"><i class="bi bi-check2-circle text-success me-1"></i> {{ t.total_items_count }} Controls</small>
+              </a>
+            {% empty %}
+              <div class="p-3 text-muted-cs text-center">No global templates found.</div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recent Platform Audit Events -->
+  <div class="cs-card">
+    <div class="cs-card-header">
+      <h5 class="mb-0 text-white"><i class="bi bi-shield-shaded text-cyan me-2"></i> Recent Platform Audit Events</h5>
+      <a href="{% url 'audit:audit_log' %}" class="btn btn-sm btn-cyber-outline">View All</a>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-cyber mb-0">
+        <thead>
+          <tr>
+            <th>Timestamp</th>
+            <th>Action</th>
+            <th>Actor</th>
+            <th>Organization</th>
+            <th>IP Address</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for ev in recent_audit_events %}
+            <tr>
+              <td class="text-muted-cs small font-monospace">{{ ev.timestamp|date:"Y-m-d H:i:s" }}</td>
+              <td><span class="badge bg-dark border border-secondary text-cyan">{{ ev.action }}</span></td>
+              <td class="text-white small">{{ ev.actor.email|default:"System" }}</td>
+              <td class="text-muted-cs small">{{ ev.organization.name|default:"Platform" }}</td>
+              <td><code>{{ ev.ip_address|default:"127.0.0.1" }}</code></td>
+              <td class="text-muted-cs small">{{ ev.details|truncatechars:55 }}</td>
+            </tr>
+          {% empty %}
+            <tr><td colspan="6" class="text-center text-muted-cs py-3">No audit events recorded yet.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

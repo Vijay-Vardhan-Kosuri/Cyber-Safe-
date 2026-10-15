@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: cybersafe-mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: cybersafe_db
+      MYSQL_USER: cybersafe_user
+      MYSQL_PASSWORD: cybersafe_secure_password_88
+      MYSQL_ROOT_PASSWORD: root_cybersafe_secret
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  web:
+    build: .
+    container_name: cybersafe-web
+    restart: always
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    environment:
+      - DB_ENGINE=mysql
+      - DB_NAME=cybersafe_db
+      - DB_USER=cybersafe_user
+      - DB_PASSWORD=cybersafe_secure_password_88
+      - DB_HOST=db
+      - DB_PORT=3306
+      - SECRET_KEY=cybersafe-docker-secret-key-3948293
+      - DEBUG=True
+    depends_on:
+      - db
+
+volumes:
+  mysql_data:

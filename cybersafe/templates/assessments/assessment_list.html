@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block title %}Security Assessments — CyberSafe{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-lg-4 py-4">
+  <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+    <div>
+      <h2 class="h3 fw-bold text-white mb-0"><i class="bi bi-clipboard-check-fill text-cyan me-2"></i> Security Posture Assessments</h2>
+      <p class="text-muted-cs small mb-0">Evaluate compliance against authorized checklist frameworks.</p>
+    </div>
+    {% if request.user_role == 'SUPER_ADMIN' or request.user_role == 'ORG_ADMIN' or request.user_role == 'SECURITY_ANALYST' %}
+      <a href="{% url 'assessments:assessment_create' %}" class="btn btn-cyber-cyan btn-sm">
+        <i class="bi bi-plus-lg me-1"></i> Initiate Assessment
+      </a>
+    {% endif %}
+  </div>
+
+  <div class="cs-card">
+    <div class="table-responsive">
+      <table class="table table-cyber mb-0 align-middle">
+        <thead>
+          <tr>
+            <th>Assessment Title</th>
+            <th>Framework Template</th>
+            <th>Assigned To</th>
+            <th>Status</th>
+            <th>Progress</th>
+            <th>Calculated Score</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for a in assessments %}
+            <tr>
+              <td>
+                <strong class="text-white d-block">{{ a.title }}</strong>
+                <small class="text-muted-cs">Started {{ a.started_at|date:"M d, Y" }}</small>
+              </td>
+              <td class="text-muted-cs small">{{ a.template.title }} (v{{ a.template.version }})</td>
+              <td class="text-white small">{{ a.assigned_to.full_name }}</td>
+              <td>
+                {% if a.status == 'COMPLETED' %}
+                  <span class="badge badge-compliant">Completed</span>
+                {% elif a.status == 'SUBMITTED' %}
+                  <span class="badge badge-task-review">Under Review</span>
+                {% else %}
+                  <span class="badge badge-task-progress">Draft</span>
+                {% endif %}
+              </td>
+              <td style="min-width: 140px;">
+                <div class="d-flex align-items-center gap-2">
+                  <div class="progress bg-dark border border-secondary flex-grow-1" style="height: 6px;">
+                    <div class="progress-bar bg-info" style="width: {{ a.completion_percentage }}%;"></div>
+                  </div>
+                  <small class="text-muted-cs">{{ a.completion_percentage }}%</small>
+                </div>
+              </td>
+              <td>
+                {% if a.status == 'COMPLETED' or a.status == 'SUBMITTED' %}
+                  <span class="fw-bold fs-6 {% if a.score >= 85 %}text-success{% elif a.score >= 60 %}text-warning{% else %}text-danger{% endif %}">
+                    {{ a.score }}%
+                  </span>
+                {% else %}
+                  <span class="text-muted-cs small">Pending</span>
+                {% endif %}
+              </td>
+              <td>
+                {% if a.status == 'DRAFT' and a.assigned_to == user %}
+                  <a href="{% url 'assessments:assessment_wizard' a.id %}" class="btn btn-sm btn-cyber-cyan py-1 px-3">
+                    Continue <i class="bi bi-pencil ms-1"></i>
+                  </a>
+                {% else %}
+                  <a href="{% url 'assessments:assessment_detail' a.id %}" class="btn btn-sm btn-cyber-outline py-1 px-3">
+                    View Results <i class="bi bi-eye ms-1"></i>
+                  </a>
+                {% endif %}
+              </td>
+            </tr>
+          {% empty %}
+            <tr><td colspan="7" class="text-center text-muted-cs py-5">No assessments found.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

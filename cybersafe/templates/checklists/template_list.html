@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}Cybersecurity Frameworks & Templates — CyberSafe{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-lg-4 py-4">
+  <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+    <div>
+      <h2 class="h3 fw-bold text-white mb-0"><i class="bi bi-journal-bookmark-fill text-cyan me-2"></i> Cybersecurity Posture Frameworks</h2>
+      <p class="text-muted-cs small mb-0">Standardized baseline checklists mapped to CIS Controls v8 and NIST CSF 2.0.</p>
+    </div>
+    {% if request.user_role == 'SUPER_ADMIN' or request.user_role == 'ORG_ADMIN' %}
+      <a href="{% url 'checklists:template_create' %}" class="btn btn-cyber-cyan btn-sm">
+        <i class="bi bi-plus-lg me-1"></i> Author New Framework
+      </a>
+    {% endif %}
+  </div>
+
+  <div class="row g-4">
+    {% for t in templates %}
+      <div class="col-md-6 col-lg-4">
+        <div class="cs-card cs-fin-card h-100 p-4 d-flex flex-column">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            {% if t.is_global %}
+              <span class="badge bg-primary-subtle text-cyan border border-info">Global Baseline</span>
+            {% else %}
+              <span class="badge bg-secondary-subtle text-white border border-secondary">{{ t.organization.name }}</span>
+            {% endif %}
+            <span class="badge bg-dark border border-secondary text-white">v{{ t.version }}</span>
+          </div>
+
+          <h5 class="text-white fw-bold mb-2">{{ t.title }}</h5>
+          <p class="text-muted-cs small flex-grow-1 mb-3">{{ t.description|truncatewords:20 }}</p>
+
+          <div class="d-flex justify-content-between align-items-center pt-3 border-top border-secondary">
+            <span class="small text-muted-cs"><i class="bi bi-check2-circle text-cyan me-1"></i> {{ t.total_items_count }} Controls</span>
+            <a href="{% url 'checklists:template_detail' t.id %}" class="btn btn-sm btn-cyber-outline">
+              Inspect Controls <i class="bi bi-arrow-right ms-1"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <div class="col-12 text-center py-5 text-muted-cs">No checklist templates available.</div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
