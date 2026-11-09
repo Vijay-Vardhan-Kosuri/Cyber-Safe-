@@ -1,3 +1,21 @@
+# CyberSafe — Personal & Organizational Cybersecurity Management Platform
+
+Enterprise-grade cybersecurity posture management platform designed for organizations and individuals to evaluate defense practices, benchmark controls against CIS Controls v8 and NIST CSF 2.0, prioritize remediation tasks, inspect technical evidence, and track posture metrics from a unified workspace.
+
+---
+
+## 👥 Contributors & Core Team
+
+Meet the contributors who built this project:
+
+| Contributor | GitHub Profile | Role / Contribution |
+| :--- | :--- | :--- |
+| **Vijay Vardhan Kosuri** | [@Vijay-Vardhan-Kosuri](https://github.com/Vijay-Vardhan-Kosuri) | Platform Architecture & Core Posture Models |
+| **Kalyan** | [@kalyanram74ai-gif](https://github.com/kalyanram74ai-gif) | Enterprise Services, Assessment Engine & RBAC |
+| **Miriyam Revathi** | [@MiriyamRevathi](https://github.com/MiriyamRevathi) | Verification Workflows, UI Polish & Documentation |
+
+---
+
 # Developer 3 Contribution Package
 
 ## Contribution Metrics
